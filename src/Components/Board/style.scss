@@ -1,0 +1,43 @@
+@import "../../Styles/vars.scss";
+
+.board {
+    margin: 3em auto;
+    width: 1366px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-header {
+        border: 4px solid hsl(217, 16%, 45%);
+        border-radius: 18px;
+        padding: 1.5em;
+        display: flex;
+        align-items: center;
+        width: 50%;
+        justify-content: space-between;
+
+        &-score {
+            &__item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                background-color: white;
+                padding: 1em;
+                border-radius: 10px;
+                width: 100px;
+
+                &--subtitle {
+                    color: $score-text;
+                    font-size: 21px;
+                    letter-spacing: .1em;
+                    margin: 0;
+                }
+                &--nbr {
+                    color: $dark-text;
+                    font-size: 50px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
