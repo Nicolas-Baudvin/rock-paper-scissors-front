@@ -1,21 +1,24 @@
 import './style.scss';
 import Header from './Header';
+import Game from './Game';
+import Footer from './Footer';
+import { useState } from 'react';
 
 const Board = () => {
+    const [showRules, setShowRules] = useState(false);
+    const handleClickRules = () => {
+        setShowRules(!showRules);
+    };
     return <main className="board">
         <Header score={0} />
-        <div className="board-game">
-            <img className="board-game-pic" src={`${process.env.PUBLIC_URL}/img/bg-triangle.svg`} alt="Board" />
-            <div className="board-game-rock">
-                <img src={`${process.env.PUBLIC_URL}/img/icon-rock.svg`} alt="" />
+        <Game />
+        <Footer handleClickRules={handleClickRules} />
+        {
+            showRules && <div className="modale">
+                <img onClick={handleClickRules} className="modale-close" src={`${process.env.PUBLIC_URL}/img/icon-close.svg`} alt="fermer" />
+                <img className="modale-rules" src={`${process.env.PUBLIC_URL}/img/image-rules.svg`} alt="" />
             </div>
-            <div className="board-game-paper">
-                <img src={`${process.env.PUBLIC_URL}/img/icon-paper.svg`} alt="" />
-            </div>
-            <div className="board-game-scissors">
-                <img src={`${process.env.PUBLIC_URL}/img/icon-scissors.svg`} alt="" />
-            </div>
-        </div>
+        }
     </main>
 };
 
