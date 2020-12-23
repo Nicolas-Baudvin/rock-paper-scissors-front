@@ -7,6 +7,130 @@
     flex-direction: column;
     align-items: center;
 
+    &-result {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        justify-content: space-between;
+
+        &-picked {
+            font-family: "Barlow Semi Condensed", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            p {
+                color: #fff;
+                font-size: 35px;
+            }
+        }
+
+        &-botpicked {
+            font-family: "Barlow Semi Condensed", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            p {
+                color: #fff;
+                font-size: 35px;
+            }
+        }
+
+        &-paper {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border: 15px solid rgb(72, 101, 244);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3em;
+            background-color: white;
+            box-shadow: 0 2px 7px rgba(0,0,0,.6) inset;
+            transition: .2s ease-in-out;
+
+            &::after {
+                content: " ";
+                width: 78px;
+                height: 78px;
+                position: absolute;
+                background-color: rgb(47, 69, 180);
+                border-radius: 50%;
+                padding: 3em;
+                z-index: -1;
+                top: -5%;
+            }
+
+            &:hover {
+                box-shadow: 0 2px 12px rgba(0,0,0,.6) inset;
+            }
+        }
+
+        &-rock {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border: 15px solid hsl(349, 71%, 52%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3em;
+            background-color: white;
+            box-shadow: 0 2px 7px rgba(0,0,0,.6) inset;
+            transition: .2s ease-in-out;
+
+            &::after {
+                content: " ";
+                width: 78px;
+                height: 78px;
+                position: absolute;
+                background-color:hsl(349, 66%, 35%);
+                border-radius: 50%;
+                padding: 3em;
+                z-index: -1;
+                top: -5%;
+            }
+
+            &:hover {
+                box-shadow: 0 2px 12px rgba(0,0,0,.6) inset;
+            }
+        }
+
+        &-scissors {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            border: 15px solid hsl(39, 89%, 49%);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 3em;
+            background-color: white;
+            box-shadow: 0 2px 7px rgba(0,0,0,.6) inset;
+            transition: .2s ease-in-out;
+
+            &::after {
+                content: " ";
+                width: 78px;
+                height: 78px;
+                position: absolute;
+                background-color: hsl(39, 88%, 36%);
+                border-radius: 50%;
+                padding: 3em;
+                z-index: -1;
+                top: -5%;
+            }
+
+            &:hover {
+                box-shadow: 0 2px 12px rgba(0,0,0,.6) inset;
+            }
+        }
+    }
+
     &-game {
         width: 100%;
         position: relative;
@@ -133,6 +257,7 @@
         align-items: center;
         width: 50%;
         justify-content: space-between;
+        font-family: "Barlow Semi Condensed", sans-serif;
 
         &-score {
             &__item {
@@ -149,6 +274,7 @@
                     font-size: 21px;
                     letter-spacing: 0.1em;
                     margin: 0;
+                    font-family: "Barlow Semi Condensed", sans-serif;
                 }
                 &--nbr {
                     color: $dark-text;
