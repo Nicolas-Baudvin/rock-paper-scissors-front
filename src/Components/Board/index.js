@@ -8,10 +8,16 @@ import Result from './Result';
 
 const Board = () => {
     const [showRules, setShowRules] = useState(false);
-    const [shotType, setShotType] = useState("");
+    const [userShotType, setShotType] = useState("");
+    const [score, setScore] = useState(0);
 
     const handleClickRules = () => {
         setShowRules(!showRules);
+    };
+
+    
+    const handleClickReset = () => {
+        setShotType("");
     };
 
     /**
@@ -22,12 +28,12 @@ const Board = () => {
     };
 
     return <main className="board">
-        <Header score={0} />
+        <Header score={score} />
         {
-            !shotType && <Game handleClickShotType={handleClickShotType} />
+            !userShotType && <Game handleClickShotType={handleClickShotType} />
         }
         {
-            shotType && <Result shotType={shotType} setShotType={setShotType} />
+            userShotType && <Result userShotType={userShotType} setShotType={setShotType} handleClickReset={handleClickReset} setScore={setScore} score={score} />
         }
         <Footer handleClickRules={handleClickRules} />
         {
