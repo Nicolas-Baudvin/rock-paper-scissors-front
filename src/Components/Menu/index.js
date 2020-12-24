@@ -6,6 +6,8 @@ import './style.scss';
 const Menu = () => {
     const history = useHistory();
     const [selected, setSelected] = useState("");
+    const [username, setUsername] = useState("");
+    const [error, setError] = useState("");
 
     const handleFocus = (gameType) => () => {
         setSelected(gameType);
@@ -15,19 +17,33 @@ const Menu = () => {
         setSelected("");
     }
 
+    const handleChange = (event) => {
+        if (error)
+        {
+            setError("");
+        }
+        setUsername(event.target.value);
+    };
+
     const handleClickNextPage = (gameType) => () => {
+        if (!username)
+        {
+            return setError("Username required");
+        }
         if (gameType === "IA")
         {
+            localStorage.setItem("user", username);
             history.push("/game/vsIA/");
         }
         else {
+            localStorage.setItem("user", username);
             // TODO: Fetch and creating a room
         }
     };
 
     return <div className="menu">
         <img src={`${process.env.PUBLIC_URL}/img/logo.svg`} alt="" />
-        <input className="menu-input" type="text" placeholder="Username" />
+        <input value={username} onChange={handleChange} className={cx("menu-input", { error: Boolean(error) })} type="text" placeholder="Username" />
         <button
             onBlur={handleBlur}
             onFocus={handleFocus("IA")}

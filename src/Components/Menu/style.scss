@@ -17,12 +17,12 @@
         transition: .2s ease-in-out;
 
         &:hover {
-            box-shadow: 0 0 0 2px rgb(72, 101, 244);
+            box-shadow: 0 0 0 3px rgb(72, 101, 244);
         }
 
         &:focus {
             outline: none;
-            box-shadow: 0 0 0 2px rgb(72, 101, 244);
+            box-shadow: 0 0 0 3px rgb(72, 101, 244);
         }
     }
 
@@ -137,5 +137,16 @@
         right: 20px;
         top: 40px;
         z-index: 10;
+    }
+}
+
+.error {
+    box-shadow: 0 0 0 3px  hsl(349, 71%, 52%);
+
+    &:hover {
+        box-shadow: 0 0 0 3px  hsl(349, 71%, 52%);
+    }
+    &:focus {
+        box-shadow: 0 0 0 3px  hsl(349, 71%, 52%);
     }
 }
