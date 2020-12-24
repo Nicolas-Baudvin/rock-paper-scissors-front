@@ -79,8 +79,10 @@ const Result = ({ userShotType, handleClickReset, setScore, score }) => {
     }, [userShotType]);
 
     useEffect(() => {
-        setUserWin(checkWin());
-        setLoading(false);
+        setTimeout(() => {    
+            setUserWin(checkWin());
+            setLoading(false);
+        }, 1000);
     }, [botShotType])
 
     return <div className="board-result">
