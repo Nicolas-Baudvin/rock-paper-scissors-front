@@ -21,7 +21,7 @@ const Result = ({ userShotType, handleClickReset, setScore, score }) => {
 
     const incrementScore = () => {
         setScore(score + 1)
-    }
+    };
 
     const storeBotsShots = (botShot, newArrayHistory) => {
         setBotShotType(botShot);

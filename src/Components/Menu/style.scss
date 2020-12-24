@@ -5,16 +5,15 @@
     width: 1366px;
     margin: 3em auto;
 
-
     &-input {
         margin-top: 3em;
-        padding: .5em 1em;
+        padding: 0.5em 1em;
         font-size: 24px;
         border: none;
         border-radius: 10px;
         width: 25%;
         font-family: "Barlow Semi Condensed", sans-serif;
-        transition: .2s ease-in-out;
+        transition: 0.2s ease-in-out;
 
         &:hover {
             box-shadow: 0 0 0 3px rgb(72, 101, 244);
@@ -27,8 +26,9 @@
     }
 
     &-button {
+        position: relative;
         width: 28.5%;
-        padding: .5em 1em;
+        padding: 0.5em 1em;
         border-radius: 10px;
         border: none;
         height: 100px;
@@ -38,115 +38,83 @@
         text-transform: uppercase;
         font-weight: bold;
         color: hsl(229, 25%, 31%);
-        box-shadow: 0 2px 10px rgba(0,0,0,.3);
-        transition: .2s ease-in-out;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.6) inset;
+        transition: 0.2s ease-in-out;
         cursor: pointer;
-        letter-spacing: .1em;
-        
+        letter-spacing: 0.1em;
+
         &:nth-child(4) {
-            border: 10px solid  rgb(72, 101, 244);
+            border: 10px solid rgb(72, 101, 244);
+            &::before {
+                content: " ";
+                width: 91%;
+                padding: 0.5em 1em;
+                border-bottom-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+                position: absolute;
+                top: 75px;
+                left: -4px;
+                background-color: rgb(44, 62, 148);
+                z-index: -10;
+            }
         }
 
         &:nth-child(3) {
             border: 10px solid hsl(349, 71%, 52%);
+            &::before {
+                content: " ";
+                width: 91%;
+                padding: 0.5em 1em;
+                border-bottom-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+                position: absolute;
+                top: 75px;
+                left: -4px;
+                background-color: hsl(349, 66%, 26%);
+                z-index: -10;
+            }
         }
 
         &:nth-child(5) {
             border: 10px solid hsl(39, 89%, 49%);
-        }
-
-        &:hover {
-            transform: scale(1.1);
-            box-shadow: 0 2px 15px rgba(0,0,0,.3);
+            &::before {
+                content: " ";
+                width: 91%;
+                padding: 0.5em 1em;
+                border-bottom-right-radius: 10px;
+                border-bottom-left-radius: 10px;
+                position: absolute;
+                top: 75px;
+                left: -4px;
+                background-color: hsl(39, 89%, 29%);
+                z-index: -10;
+            }
         }
 
         &:focus {
             outline: none;
             transform: scale(1.1);
-            box-shadow: 0 2px 15px rgba(0,0,0,.3);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
         }
     }
 }
 
 .selected-blue {
-    &::before {
-        content: " ";
-        width: 25px;
-        height: 1px;
-        border-top: 2px solid rgba(72, 101, 244, .6);
-        position: absolute;
-        left: 20px;
-        top: 40px;
-        z-index: 10;
-    }
-
-    &::after {
-        content: " ";
-        width: 25px;
-        height: 1px;
-        border-top: 2px solid rgba(72, 101, 244, .6);
-        position: absolute;
-        right: 20px;
-        top: 40px;
-        z-index: 10;
-    }
 }
 
 .selected-red {
-    &::before {
-        content: " ";
-        width: 25px;
-        height: 1px;
-        border-top: 2px solid hsl(349, 71%, 52%);
-        position: absolute;
-        left: 20px;
-        top: 40px;
-        z-index: 10;
-    }
-
-    &::after {
-        content: " ";
-        width: 25px;
-        height: 1px;
-        border-top: 2px solid hsl(349, 71%, 52%);
-        position: absolute;
-        right: 20px;
-        top: 40px;
-        z-index: 10;
-    }
 }
 
 .selected-yellow {
-    &::before {
-        content: " ";
-        width: 25px;
-        height: 1px;
-        border-top: 2px solid hsl(39, 89%, 49%);
-        position: absolute;
-        left: 20px;
-        top: 40px;
-        z-index: 10;
-    }
-
-    &::after {
-        content: " ";
-        width: 25px;
-        height: 1px;
-        border-top: 2px solid hsl(39, 89%, 49%);
-        position: absolute;
-        right: 20px;
-        top: 40px;
-        z-index: 10;
-    }
 }
 
 .error {
-    box-shadow: 0 0 0 3px  hsl(349, 71%, 52%);
+    box-shadow: 0 0 0 3px hsl(349, 71%, 52%);
 
     &:hover {
-        box-shadow: 0 0 0 3px  hsl(349, 71%, 52%);
+        box-shadow: 0 0 0 3px hsl(349, 71%, 52%);
     }
     &:focus {
-        box-shadow: 0 0 0 3px  hsl(349, 71%, 52%);
+        box-shadow: 0 0 0 3px hsl(349, 71%, 52%);
     }
 }
