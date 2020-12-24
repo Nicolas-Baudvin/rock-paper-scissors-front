@@ -2,31 +2,7 @@ import { useEffect, useState } from "react";
 import BotPick from "./BotPick";
 import Final from "./Final";
 import UserPick from './userPick';
-
-
-const winRulesObject = {
-    rock: {
-        paper: false,
-        rock: "equal",
-        scissors: true
-    },
-    paper: {
-        paper: "equal",
-        rock: true,
-        scissors: false
-    },
-    scissors: {
-        paper: true,
-        rock: false,
-        scissors: "equal"
-    }
-};
-
-const shotTypeObject = {
-    1: "rock",
-    2: "paper",
-    3: "scissors"
-};
+import { winRulesObject, shotTypeObject } from '../utils';
 
 const Result = ({ userShotType, handleClickReset, setScore, score }) => {
     const [botShotType, setBotShotType] = useState("");
@@ -83,7 +59,7 @@ const Result = ({ userShotType, handleClickReset, setScore, score }) => {
             setUserWin(checkWin());
             setLoading(false);
         }, 1000);
-    }, [botShotType])
+    }, [botShotType]);
 
     return <div className="board-result">
         <div className="board-result-container">
