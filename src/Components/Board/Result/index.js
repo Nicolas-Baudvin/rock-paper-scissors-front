@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import BotPick from "./BotPick";
+import Final from "./Final";
+import UserPick from './userPick';
 
 
 const winRulesObject = {
@@ -82,38 +85,11 @@ const Result = ({ userShotType, handleClickReset, setScore, score }) => {
 
     return <div className="board-result">
         <div className="board-result-container">
-            <div className="board-result-picked">
-                <p>You picked</p>
-                <div className={`board-result-${userShotType}`}>
-                    <img src={`${process.env.PUBLIC_URL}/img/icon-${userShotType}.svg`} alt="" />
-                </div>
-            </div>
-
-            <div className="board-result-botpicked">
-                <p>The bot picked</p>
-                {
-                    !isLoading && <div className={`board-result-${botShotType}`}>
-                        <img src={`${process.env.PUBLIC_URL}/img/icon-${botShotType}.svg`} alt="" />
-                    </div>
-                }
-                {
-                    isLoading && <div className="board-result-botpicked-loading">
-                        Waiting for bot ...
-                </div>
-                }
-            </div>
+            <UserPick userShotType={userShotType} />     
+            <BotPick botShotType={botShotType} isLoading={isLoading} />
         </div>
         {
-            !isLoading && <div className="board-result-final">
-                <p>
-                    {
-                        isUserWin && isUserWin !== "equal" ? "You win !" : isUserWin === "equal" ? "Equality" : "You loose"
-                    }
-                </p>
-                <button onClick={handleClickReset} className="board-result-final-restart">
-                    Play Again
-            </button>
-            </div>
+            !isLoading && <Final handleClickReset={handleClickReset} isUserWin={isUserWin} />
         }
     </div>
 };
