@@ -56,6 +56,14 @@
                 left: -4px;
                 background-color: rgb(44, 62, 148);
                 z-index: -10;
+                transition: 0.2s ease-in-out;
+            }
+
+            &:hover {
+                border-color: rgb(36, 51, 126);
+                &::before {
+                    background-color: rgb(26, 37, 90);
+                }
             }
         }
 
@@ -72,6 +80,14 @@
                 left: -4px;
                 background-color: hsl(349, 66%, 26%);
                 z-index: -10;
+                transition: 0.2s ease-in-out;
+            }
+
+            &:hover {
+                border-color: hsl(349, 65%, 35%);
+                &::before {
+                    background-color: hsl(349, 65%, 21%);
+                }
             }
         }
 
@@ -88,13 +104,19 @@
                 left: -4px;
                 background-color: hsl(39, 89%, 29%);
                 z-index: -10;
+                transition: 0.2s ease-in-out;
+            }
+
+            &:hover {
+                border-color:hsl(39, 88%, 40%);
+                &::before {
+                    background-color: hsl(39, 87%, 26%);
+                }
             }
         }
 
         &:focus {
             outline: none;
-            transform: scale(1.1);
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
         }
     }
 }
