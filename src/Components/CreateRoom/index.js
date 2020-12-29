@@ -7,7 +7,7 @@ import './style.scss';
 
 const CreateRoom = () => {
     const dispatch = useDispatch();
-    const { currentSocket, room } = useSelector(state => state.socket)
+    const { currentSocket, room } = useSelector(state => state.socket);
     const history = useHistory();
 
     const [roomName, setRoomName] = useState("");
