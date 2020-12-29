@@ -1,0 +1,15 @@
+.online {
+    &-scores {
+        display: flex;
+        align-items: center;
+        
+        &__item {
+            margin: 0 1em;
+        }
+
+        &-username {
+            display: flex;
+            align-items: center;
+        }
+    }
+}
