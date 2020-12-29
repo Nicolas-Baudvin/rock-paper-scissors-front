@@ -16,20 +16,23 @@ const Buttons = ({ setSelected, setError, username, selected }) => {
         {
             return setError("Username required");
         }
-        if (gameType === "IA")
-        {
+        else {
             localStorage.setItem("user", username);
-            history.push("/game/vsIA/");
-
-            return;
-        }
-        if (gameType === "Create")
-        {
-            localStorage.setItem("user", username);
-            history.push("/game/create/");
-            return;
+            if (gameType === "IA")
+            {
+                return history.push("/game/vsIA/");
+            }
+            if (gameType === "Create")
+            {
+                return history.push("/game/create/");
+            }
+            if (gameType === "Join")
+            {
+                return history.push("/game/join/");
+            }
         }
     };
+
     return <>
         <button
             onBlur={handleBlur}

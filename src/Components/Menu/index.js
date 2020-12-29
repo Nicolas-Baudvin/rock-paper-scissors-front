@@ -1,13 +1,14 @@
 import cx from 'classnames';
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { logOut } from '../../Store/Socket/actions';
 import Buttons from './Buttons';
 import './style.scss';
 
 const Menu = () => {
-    const history = useHistory();
+    const dispatch = useDispatch();
     const [selected, setSelected] = useState("");
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState(localStorage.getItem("user") ? localStorage.getItem("user") : "" );
     const [error, setError] = useState("");
 
 
@@ -18,6 +19,10 @@ const Menu = () => {
         }
         setUsername(event.target.value);
     };
+
+    useEffect(() => {
+        dispatch(logOut());
+    }, [])
 
     return <div className="menu">
         <img src={`${process.env.PUBLIC_URL}/img/logo.svg`} alt="" />
