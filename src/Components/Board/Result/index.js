@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import BotPick from "./BotPick";
 import Final from "./Final";
 import UserPick from './userPick';
-import { winRulesObject, shotTypeObject } from '../utils';
+import { winRulesObject, shotTypeObject } from '../../../Utils';
 
 const Result = ({ userShotType, handleClickReset, setScore, score }) => {
     const [botShotType, setBotShotType] = useState("");
