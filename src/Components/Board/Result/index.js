@@ -14,13 +14,13 @@ const Result = ({ userShotType, handleClickReset, setScore, score }) => {
         const result = winRulesObject[userShotType][botShotType];
         if (result && result !== "equal")
         {
-            incrementScore();
+            incrementScore(1);
         }
         return result;
     };
 
-    const incrementScore = () => {
-        setScore(score + 1)
+    const incrementScore = (number) => {
+        setScore(score + number);
     };
 
     const storeBotsShots = (botShot, newArrayHistory) => {
@@ -37,9 +37,10 @@ const Result = ({ userShotType, handleClickReset, setScore, score }) => {
 
     const makeRandomShot = () => {
         let randomNumber = Math.floor(Math.random() * 3) + 1;
-        const shotType = shotTypeObject[randomNumber];
-        const lastShot = botShotHistory[botShotHistory.length - 1];
-        const previousLastShos = botShotHistory[botShotHistory.length - 2];
+
+        const shotType = shotTypeObject[randomNumber],
+            lastShot = botShotHistory[botShotHistory.length - 1],
+            previousLastShos = botShotHistory[botShotHistory.length - 2];
 
         while (lastShot === previousLastShos && shotType === lastShot)
         {
@@ -51,11 +52,12 @@ const Result = ({ userShotType, handleClickReset, setScore, score }) => {
     useEffect(() => {
         setLoading(true);
         const randomShot = makeRandomShot();
+
         identifyShots(randomShot);
     }, [userShotType]);
 
     useEffect(() => {
-        setTimeout(() => {    
+        setTimeout(() => {
             setUserWin(checkWin());
             setLoading(false);
         }, 1000);
@@ -63,7 +65,7 @@ const Result = ({ userShotType, handleClickReset, setScore, score }) => {
 
     return <div className="board-result">
         <div className="board-result-container">
-            <UserPick userShotType={userShotType} />     
+            <UserPick userShotType={userShotType} />
             <BotPick botShotType={botShotType} isLoading={isLoading} />
         </div>
         {
