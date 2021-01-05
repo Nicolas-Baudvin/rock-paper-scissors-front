@@ -30,7 +30,7 @@ const Middleware = (store) => (next) => (action) => {
             break;
         }
         case CONNECTION_TO_SOCKET: {
-            socket = io.connect("http://localhost:5000/");
+            socket = io.connect("https://rockpaperscissors-game-back.herokuapp.com/");
             action.socket = socket;
             const username = localStorage.getItem("user")
             socket.emit("new user", username);
