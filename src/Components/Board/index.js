@@ -25,7 +25,6 @@ const Board = () => {
         setFriendShotType("");
         if (room)
         {
-            // TODO: Dispatch Reset Shots
             dispatch(playAgain());
         }
     };
@@ -45,14 +44,13 @@ const Board = () => {
     }, [userShotType]);
 
     useEffect(() => {
-        if (room.shots.length === 2)
+        if (room?.shots?.length === 2)
         {
             const username = localStorage.getItem("user");
             const friendShot = room.shots.find((shot) => shot.username !== username);
-            console.log(friendShot);
             setFriendShotType(friendShot);
         }
-    }, [room.shots]);
+    }, [room && room.shots]);
 
     return room ? <main className="board">
         <Header isOnline={Boolean(room)} users={room.users} scores={room.scores} />
