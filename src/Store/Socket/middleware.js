@@ -6,10 +6,9 @@ const Middleware = (store) => (next) => (action) => {
     switch (action.type)
     {
         case LOG_OUT: {
-            console.log("déconnexion")
             if (socket !== null)
             {
-                socket.emit("logout", store.getState().socket.room.name);
+                socket.emit("logout");
                 next(action);
             }
             localStorage.clear();
