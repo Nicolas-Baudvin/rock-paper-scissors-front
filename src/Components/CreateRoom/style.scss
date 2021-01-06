@@ -73,3 +73,12 @@
         }
     }
 }
+
+
+@media only screen and (max-width: 767px) {
+    .create {
+        &-input {
+            width: 250px;
+        }
+    }
+}

@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 1366px;
     margin: 3em auto;
 
     &-input {
@@ -11,7 +10,7 @@
         font-size: 24px;
         border: none;
         border-radius: 10px;
-        width: 25%;
+        width: 400px;
         font-family: "Barlow Semi Condensed", sans-serif;
         transition: 0.2s ease-in-out;
 
@@ -27,7 +26,7 @@
 
     &-button {
         position: relative;
-        width: 28.5%;
+        width: 400px;
         padding: 0.5em 1em;
         border-radius: 10px;
         border: none;
@@ -122,14 +121,14 @@
             }
 
             &:hover {
-                border-color:hsl(39, 88%, 40%);
+                border-color: hsl(39, 88%, 40%);
                 &::before {
                     background-color: hsl(39, 87%, 26%);
                 }
             }
 
             &:focus {
-                border-color:hsl(39, 88%, 40%);
+                border-color: hsl(39, 88%, 40%);
                 &::before {
                     background-color: hsl(39, 87%, 26%);
                 }
@@ -159,5 +158,34 @@
     }
     &:focus {
         box-shadow: 0 0 0 3px hsl(349, 71%, 52%);
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .menu {
+
+        &-input {
+            width: 240px;
+        }
+
+        &-button {
+            width: 300px;
+
+            &:nth-child(3) {
+                &::before {
+                    width: 88.5%;
+                }
+            }
+            &:nth-child(4) {
+                &::before {
+                    width: 88.5%;
+                }
+            }
+            &:nth-child(5) {
+                &::before {
+                    width: 88.5%;
+                }
+            }
+        }
     }
 }

@@ -2,18 +2,17 @@
 
 .board {
     padding: 3em 0;
-    width: 1366px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    min-height: 1000px;
+    height: 100%;
 
     &-await {
         font-size: 24px;
         color: white;
         text-transform: uppercase;
-        letter-spacing: .1em;
+        letter-spacing: 0.1em;
     }
 
     &-result {
@@ -21,6 +20,7 @@
         flex-direction: column;
         align-items: center;
         width: 50%;
+        height: 700px;
 
         &-final {
             display: flex;
@@ -34,7 +34,7 @@
                 font-size: 30px;
             }
 
-            button {
+            &-restart {
                 border: 2px solid #fff;
                 padding: 0.5em 1em;
                 font-size: 21px;
@@ -47,6 +47,7 @@
                 transition: 0.2s ease-in-out;
                 font-weight: bold;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+                margin: 0 0 1.5em 0;
 
                 &:hover {
                     background-color: #fff;
@@ -198,21 +199,21 @@
     }
 
     &-game {
-        width: 100%;
         position: relative;
         height: 700px;
+        width: 700px;
 
         &-pic {
             position: absolute;
             left: 50%;
-            transform: translate(-50%, 40%);
+            transform: translate(-50%, 70%);
             z-index: -2;
         }
 
         &-paper {
             position: absolute;
-            left: 34%;
-            top: 5%;
+            left: 18%;
+            top: 15%;
             width: 48px;
             height: 48px;
             border: 15px solid rgb(72, 101, 244);
@@ -246,8 +247,8 @@
 
         &-rock {
             position: absolute;
-            left: 43.5%;
-            top: 40%;
+            left: 38.5%;
+            top: 50%;
             width: 48px;
             height: 48px;
             border: 15px solid hsl(349, 71%, 52%);
@@ -281,8 +282,8 @@
 
         &-scissors {
             position: absolute;
-            right: 34%;
-            top: 5%;
+            right: 18%;
+            top: 15%;
             width: 48px;
             height: 48px;
             border: 15px solid hsl(39, 89%, 49%);
@@ -321,7 +322,7 @@
         padding: 1.5em;
         display: flex;
         align-items: center;
-        width: 50%;
+        width: 700px;
         justify-content: space-between;
         font-family: "Barlow Semi Condensed", sans-serif;
 
@@ -353,9 +354,11 @@
 }
 
 .footer {
-    align-self: flex-end;
+    display: flex;
+    align-items: center;
 
     &-button {
+        width: 200px;
         border: 2px solid #fff;
         padding: 0.5em 1em;
         font-size: 21px;
@@ -368,7 +371,7 @@
         transition: 0.2s ease-in-out;
         font-weight: bold;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-        margin: 0 1em;
+        margin: 3em 1em;
 
         &:hover {
             background-color: #fff;
@@ -402,5 +405,198 @@
 
     &-rules {
         margin-top: 2em;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .footer {
+        flex-direction: column;
+        margin-top: 8em;
+        &-button {
+            margin: 0.5em 0;
+            width: 200px;
+        }
+    }
+
+    .board {
+        width: 100%;
+
+        &-result {
+            width: 100%;
+
+            &-final {
+                p {
+                    font-size: 15px;
+                }
+
+                button {
+                    font-size: 15px;
+                }
+            }
+
+            &-picked {
+                p {
+                    color: #fff;
+                    font-size: 15px;
+                }
+            }
+
+            &-botpicked {
+                &-loading {
+                    width: 20px;
+                    height: 20px;
+                    padding: 1.5em;
+                    font-size: 7px;
+                }
+
+                p {
+                    font-size: 15px;
+                }
+            }
+
+            &-paper {
+                width: 20px;
+                height: 20px;
+                border: 10px solid rgb(72, 101, 244);
+
+                img {
+                    margin-top: -1em;
+                }
+
+                &::after {
+                    width: 42px;
+                    height: 42px;
+                }
+            }
+
+            &-rock {
+                width: 20px;
+                height: 20px;
+                border: 10px solid hsl(349, 71%, 52%);
+
+                img {
+                    margin-top: -.5em;
+                }
+
+                &::after {
+                    width: 42px;
+                    height: 42px;
+                }
+            }
+
+            &-scissors {
+                width: 20px;
+                height: 20px;
+                border: 10px solid hsl(39, 89%, 49%);
+
+                img {
+                    margin-top: -1em;
+                }
+
+                &::after {
+                    width: 42px;
+                    height: 42px;
+                }
+            }
+        }
+
+        &-header {
+            width: 250px;
+            padding: 0.9em;
+            border: 2px solid hsl(217, 16%, 45%);
+            img {
+                width: 80px;
+                height: 50px;
+            }
+            &-score {
+                &__item {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    background-color: white;
+                    padding: 0.3em;
+                    border-radius: 10px;
+                    width: 50px;
+
+                    &--subtitle {
+                        color: $score-text;
+                        font-size: 15px;
+                        letter-spacing: 0.1em;
+                        margin: 0;
+                        font-family: "Barlow Semi Condensed", sans-serif;
+                    }
+                    &--nbr {
+                        color: $dark-text;
+                        font-size: 25px;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+
+        &-game {
+            position: relative;
+            height: 300px;
+            width: 300px;
+
+            &-pic {
+                width: 200px;
+                height: 200px;
+            }
+
+            &-paper {
+                left: 0%;
+                top: 25%;
+                width: 20px;
+                height: 20px;
+                border: 10px solid rgb(72, 101, 244);
+
+                img {
+                    margin-top: -1em;
+                }
+
+                &::after {
+                    width: 42px;
+                    height: 42px;
+                }
+            }
+
+            &-rock {
+                position: absolute;
+                left: 27%;
+                top: 80%;
+                width: 20px;
+                height: 20px;
+                border: 10px solid hsl(349, 71%, 52%);
+                padding: 3em;
+
+                img {
+                    margin-top: -.7em;
+                }
+
+                &::after {
+                    width: 42px;
+                    height: 42px;
+                }
+            }
+
+            &-scissors {
+                position: absolute;
+                right: 0%;
+                top: 25%;
+                width: 20px;
+                height: 20px;
+                border: 10px solid hsl(39, 89%, 49%);
+
+                img {
+                    margin-top: -1em;
+                }
+
+                &::after {
+                    width: 42px;
+                    height: 42px;
+                }
+            }
+        }
     }
 }
