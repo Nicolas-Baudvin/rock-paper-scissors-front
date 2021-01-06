@@ -28,6 +28,8 @@ const CreateRoom = () => {
         setRoomName(e.target.value);
     };
 
+    const handleClickMenu = () => history.push("/");
+
     useEffect(() => {
         if (room)
         {
@@ -56,6 +58,10 @@ const CreateRoom = () => {
                 Start
             </button>
         </form>
+
+        <button onClick={handleClickMenu} className="button">
+            Menu
+        </button>
     </div>
 };
 

@@ -6,6 +6,34 @@
     align-items: center;
     width: 100%;
 
+    button {
+        border: 3px solid white;
+        padding: 0.5em 1.5em;
+        font-size: 1.5rem;
+        border-radius: 7px;
+        background-color: transparent;
+        color: white;
+        transition: 0.2s ease-in-out;
+        cursor: pointer;
+        font-weight: bold;
+        width: 200px;
+
+        &:hover {
+            background-color: #fff;
+            color: $score-text;
+        }
+
+        &:focus {
+            background-color: #fff;
+            color: $score-text;
+            outline: none;
+        }
+
+        &:nth-child(2) {
+            margin: 1em 0;
+        }
+    }
+
     form {
         display: flex;
         flex-direction: column;

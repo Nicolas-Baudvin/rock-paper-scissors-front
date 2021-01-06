@@ -15,7 +15,6 @@ const JoinRoom = () => {
         e.preventDefault();
         if (currentSocket.connected && roomName)
         {
-            console.log(currentSocket);
             dispatch(joinRoom(roomName));
         }
     };
@@ -28,17 +27,18 @@ const JoinRoom = () => {
         setRoomName(e.target.value);
     };
 
+    const handleClickMenu = () => history.push("/");
+
     useEffect(() => {
         dispatch(connectionToSocket());
     }, []);
 
     useEffect(() => {
-        console.log(room);
         if (room)
         {
             history.push(`/game/${room.name}`);
         }
-    }, [room])
+    }, [room]);
 
     return <div className="join">
         <img src={`${process.env.PUBLIC_URL}/img/logo.svg`} alt="ROCK PAPER SCISSORS" />
@@ -56,6 +56,9 @@ const JoinRoom = () => {
                 Start
             </button>
         </form>
+        <button onClick={handleClickMenu} className="button">
+            Menu
+        </button>
     </div>
 };
 
