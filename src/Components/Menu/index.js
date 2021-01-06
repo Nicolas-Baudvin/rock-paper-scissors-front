@@ -17,6 +17,10 @@ const Menu = () => {
         {
             setError("");
         }
+        if (event.target.value.length > 10)
+        {
+            return setError("Username must have 10 chars max")
+        }
         setUsername(event.target.value);
     };
 
