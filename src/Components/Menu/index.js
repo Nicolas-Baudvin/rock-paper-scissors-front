@@ -8,7 +8,7 @@ import './style.scss';
 const Menu = () => {
     const dispatch = useDispatch();
     const [selected, setSelected] = useState("");
-    const [username, setUsername] = useState(localStorage.getItem("user") ? localStorage.getItem("user") : "" );
+    const [username, setUsername] = useState(localStorage.getItem("user") ? localStorage.getItem("user") : "");
     const [error, setError] = useState("");
 
 
@@ -27,12 +27,13 @@ const Menu = () => {
     return <div className="menu">
         <img src={`${process.env.PUBLIC_URL}/img/logo.svg`} alt="" />
         <input value={username} onChange={handleChange} className={cx("menu-input", { error: Boolean(error) })} type="text" placeholder="Username" />
-        <Buttons
-            setSelected={setSelected}
-            setError={setError}
-            username={username}
-            selected={selected}
-        />
+        {
+            username && <Buttons
+                setSelected={setSelected}
+                username={username}
+                selected={selected}
+            />
+        }
     </div>
 };
 
