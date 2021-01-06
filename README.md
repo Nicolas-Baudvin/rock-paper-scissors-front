@@ -5,6 +5,7 @@ Welcome to my Rock Paper Scissors game.
 It's a simple game you can play in real time with one friend.
 
 [You can play here](https://rockpaperscissors-game.herokuapp.com/)
+[Back end Github here](https://github.com/Nicolas-Baudvin/rock-paper-scissors-back)
 
 ## Technologies used
 
