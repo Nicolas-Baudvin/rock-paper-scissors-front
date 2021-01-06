@@ -1,66 +1,56 @@
 import cx from 'classnames';
 import { useHistory } from 'react-router-dom';
 
-const Buttons = ({ setSelected, setError, username, selected }) => {
-    const history = useHistory();
-    const handleFocus = (gameType) => () => {
-        setSelected(gameType);
-    };
+const buttons = [
+    {
+        value: "IA",
+        classname: "selected-red",
+        text: "Play against AI"
+    },
+    {
+        value: "Create",
+        classname: "selected-blue",
+        text: "Create a room"
+    },
+    {
+        value: "Join",
+        classname: "selected-yellow",
+        text: "Join a room"
+    }
+];
 
-    const handleBlur = () => {
-        setSelected("");
-    };
+const Buttons = ({ setSelected, username, selected }) => {
+    const history = useHistory();
+
+    const handleFocus = (gameType) => () => setSelected(gameType);
+
+    const handleBlur = () => setSelected("");
 
     const handleClickNextPage = (gameType) => () => {
-        if (!username)
+        localStorage.setItem("user", username);
+        if (gameType === "IA")
         {
-            return setError("Username required");
+            return history.push("/game/vsIA/");
         }
-        else {
-            localStorage.setItem("user", username);
-            if (gameType === "IA")
-            {
-                return history.push("/game/vsIA/");
-            }
-            if (gameType === "Create")
-            {
-                return history.push("/game/create/");
-            }
-            if (gameType === "Join")
-            {
-                return history.push("/game/join/");
-            }
+        if (gameType === "Create")
+        {
+            return history.push("/game/create/");
+        }
+        if (gameType === "Join")
+        {
+            return history.push("/game/join/");
         }
     };
 
-    return <>
+    return buttons.map((button) => (
         <button
             onBlur={handleBlur}
-            onFocus={handleFocus("IA")}
-            onClick={handleClickNextPage("IA")}
-            className={cx("menu-button", { "selected-red": selected === "IA" })}
+            onFocus={handleFocus(button.value)}
+            onClick={handleClickNextPage(button.value)}
+            className={cx("menu-button", { [button.classname]: selected === button.value })}
         >
-            Play against AI
-        </button>
-
-        <button
-            onBlur={handleBlur}
-            onFocus={handleFocus("Create")}
-            onClick={handleClickNextPage("Create")}
-            className={cx("menu-button", { "selected-blue": selected === "Create" })}
-        >
-            Create a room
-        </button>
-
-        <button
-            onBlur={handleBlur}
-            onFocus={handleFocus("Join")}
-            onClick={handleClickNextPage("Join")}
-            className={cx("menu-button", { "selected-yellow": selected === "Join" })}
-        >
-            Join a Room
-        </button>
-    </>
+            {button.text}
+        </button>));
 };
 
 export default Buttons;
