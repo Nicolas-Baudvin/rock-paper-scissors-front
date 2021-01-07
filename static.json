@@ -1,0 +1,17 @@
+{
+    "root": "build/",
+    "routes": {
+        "/**": "index.html"
+    },
+    "canonical_host": "rockpaperscissors-game.herokuapp.com/",
+    "https_only": true,
+    "headers": {
+        "/**": {
+            "Strict-Transport-Security": "max-age=31557600",
+            "Content-Security-Policy": "default-src 'none'; connect-src 'self' https://rockpaperscissors-game-back.herokuapp.com/ ws://; img-src 'self'; manifest-src 'self'; script-src 'self' www.google-analytics.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com; base-uri 'self';",
+            "X-Frame-Options": "SAMEORIGIN",
+            "Cache-Control": "no-store, no-cache",
+            "X-Content-Type-Options": "nosniff"
+        }
+    }
+}
