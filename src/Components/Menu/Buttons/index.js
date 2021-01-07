@@ -42,8 +42,9 @@ const Buttons = ({ setSelected, username, selected }) => {
         }
     };
 
-    return buttons.map((button) => (
+    return buttons.map((button, i) => (
         <button
+            key={i}
             onBlur={handleBlur}
             onFocus={handleFocus(button.value)}
             onClick={handleClickNextPage(button.value)}
