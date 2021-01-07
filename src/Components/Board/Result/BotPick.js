@@ -3,7 +3,7 @@ const BotPick = ({ isLoading, botShotType }) => {
         <p>The bot picked</p>
         {
             !isLoading && <div className={`board-result-${botShotType}`}>
-                <img src={`${process.env.PUBLIC_URL}/img/icon-${botShotType}.svg`} alt="" />
+                <img src={`${process.env.PUBLIC_URL}/img/icon-${botShotType}.svg`} alt={botShotType} />
             </div>
         }
         {

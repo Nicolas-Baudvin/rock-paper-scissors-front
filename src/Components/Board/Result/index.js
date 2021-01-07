@@ -2,65 +2,34 @@ import { useEffect, useState } from "react";
 import BotPick from "./BotPick";
 import Final from "./Final";
 import UserPick from './userPick';
-import { winRulesObject, shotTypeObject } from '../../../Utils';
+import { BotEngine, GameEngine } from '../../../GameEngine';
 
 const Result = ({ userShotType, handleClickReset, setScore, score }) => {
-    const [botShotType, setBotShotType] = useState("");
-    const [botShotHistory, setBotShotHistory] = useState([]);
     const [isUserWin, setUserWin] = useState("");
     const [isLoading, setLoading] = useState(true);
+    const [botShotType, setBotShotType] = useState("");
 
-    const checkWin = () => {
-        const result = winRulesObject[userShotType][botShotType];
-        if (result && result !== "equal")
-        {
-            incrementScore(1);
-        }
-        return result;
-    };
-
-    const incrementScore = (number) => {
-        setScore(score + number);
-    };
-
-    const storeBotsShots = (botShot, newArrayHistory) => {
-        setBotShotType(botShot);
-        setBotShotHistory(newArrayHistory);
-    };
-
-    const identifyShots = (botShotNumber) => {
-        const shot = shotTypeObject[botShotNumber]
-        const newArrayHistory = botShotHistory;
-        newArrayHistory.push(shot);
-        storeBotsShots(shot, newArrayHistory);
-    };
-
-    const makeRandomShot = () => {
-        let randomNumber = Math.floor(Math.random() * 3) + 1;
-
-        const shotType = shotTypeObject[randomNumber],
-            lastShot = botShotHistory[botShotHistory.length - 1],
-            previousLastShos = botShotHistory[botShotHistory.length - 2];
-
-        while (lastShot === previousLastShos && shotType === lastShot)
-        {
-            randomNumber = Math.floor(Math.random() * 3) + 1;
-        }
-        return randomNumber;
-    };
+    const incrementScore = (number) => setScore(score + number);
 
     useEffect(() => {
         setLoading(true);
-        const randomShot = makeRandomShot();
-
-        identifyShots(randomShot);
-    }, [userShotType]);
+        const Bot = new BotEngine();
+        setBotShotType(Bot.getShotType());
+    }, []);
 
     useEffect(() => {
+        const Engine = new GameEngine(userShotType, botShotType);
+
         setTimeout(() => {
-            setUserWin(checkWin());
+            const isPlayerWin = Engine.getWinner();
+
+            if (isPlayerWin && isPlayerWin !== "equal")
+                incrementScore(1);
+
+            setUserWin(isPlayerWin);
             setLoading(false);
         }, 1000);
+
     }, [botShotType]);
 
     return <div className="board-result">
