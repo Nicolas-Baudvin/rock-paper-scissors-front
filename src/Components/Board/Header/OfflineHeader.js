@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const OfflineHeader = ({ score }) => {
     return <header className="board-header">
         <div className="board-header-title">
@@ -10,6 +12,10 @@ const OfflineHeader = ({ score }) => {
             </div>
         </div>
     </header>
+};
+
+OfflineHeader.propTypes = {
+    score: PropTypes.number.isRequired,
 };
 
 export default OfflineHeader;

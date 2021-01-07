@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import PropTypes from 'prop-types';
 
 const FriendPick = ({ friendShotType }) => {
     return <div className="board-result-botpicked">
@@ -14,6 +14,10 @@ const FriendPick = ({ friendShotType }) => {
                 </div>
         }
     </div>
+};
+
+FriendPick.propTypes = {
+    friendShotType: PropTypes.string
 };
 
 export default FriendPick;

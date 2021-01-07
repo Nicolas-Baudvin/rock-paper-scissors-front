@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const BotPick = ({ isLoading, botShotType }) => {
     return <div className="board-result-botpicked">
         <p>The bot picked</p>
@@ -12,6 +14,11 @@ const BotPick = ({ isLoading, botShotType }) => {
                 </div>
         }
     </div>
+};
+
+BotPick.propTypes = {
+    isLoading: PropTypes.bool.isRequired,
+    botShotType: PropTypes.string.isRequired
 };
 
 export default BotPick;

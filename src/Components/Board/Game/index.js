@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const Game = ({ handleClickShotType }) => {
     return <div className="board-game">
         <img className="board-game-pic" src={`${process.env.PUBLIC_URL}/img/bg-triangle.svg`} alt="Board" />
@@ -14,6 +16,10 @@ const Game = ({ handleClickShotType }) => {
             <img src={`${process.env.PUBLIC_URL}/img/icon-scissors.svg`} alt="" />
         </div>
     </div>
+};
+
+Game.propTypes = {
+    handleClickShotType: PropTypes.func.isRequired
 };
 
 export default Game;

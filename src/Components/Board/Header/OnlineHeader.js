@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const OnlineHeader = ({ users, scores }) => {
     const username = localStorage.getItem("user");
 
@@ -17,6 +19,11 @@ const OnlineHeader = ({ users, scores }) => {
 
         </div>
     </header>
+};
+
+OnlineHeader.propTypes = {
+    users: PropTypes.array.isRequired,
+    scores: PropTypes.object.isRequired
 };
 
 export default OnlineHeader;

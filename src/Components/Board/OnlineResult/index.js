@@ -1,6 +1,7 @@
 import OwnerPick from './OwnerPick';
 import FriendPick from './FriendPick';
 import FinalResult from './FinalResult';
+import PropTypes from 'prop-types';
 
 const OnlineResult = ({ userShotType, friendShotType, handleClickReset }) => {
 
@@ -13,6 +14,12 @@ const OnlineResult = ({ userShotType, friendShotType, handleClickReset }) => {
             (userShotType && friendShotType) && <FinalResult handleClickReset={handleClickReset} />
         }
     </div>
+};
+
+OnlineResult.propTypes = {
+    userShotType: PropTypes.string,
+    friendShotType: PropTypes.string,
+    handleClickReset: PropTypes.func.isRequired
 };
 
 export default OnlineResult;

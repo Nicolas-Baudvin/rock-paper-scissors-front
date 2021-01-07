@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types';
+
+
 const Final = ({ isUserWin, handleClickReset }) => {
     return <div className="board-result-final">
         <p>
@@ -7,8 +10,13 @@ const Final = ({ isUserWin, handleClickReset }) => {
         </p>
         <button onClick={handleClickReset} className="board-result-final-restart">
             Play Again
-            </button>
+        </button>
     </div>
+};
+
+Final.propTypes = {
+    isUserWin: PropTypes.bool.isRequired,
+    handleClickReset: PropTypes.func.isRequired
 };
 
 export default Final;

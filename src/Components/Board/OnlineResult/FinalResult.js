@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import PropTypes from 'prop-types';
 
 const FinalResult = ({ handleClickReset }) => {
     const { winner } = useSelector((state) => state.socket);
@@ -8,8 +9,12 @@ const FinalResult = ({ handleClickReset }) => {
         </p>
         <button onClick={handleClickReset} className="board-result-final-restart">
             Play Again
-            </button>
+        </button>
     </div>
+};
+
+FinalResult.propTypes = {
+    handleClickReset: PropTypes.func.isRequired
 };
 
 export default FinalResult;
