@@ -1,4 +1,4 @@
-import { CONNECTION_TO_SOCKET, CREATE_NEW_ROOM, JOIN_ROOM, LOG_OUT, NEW_WINNER, REFRESH_ROOM_STATUS } from "./actions";
+import { CLEAR_ERROR, CONNECTION_TO_SOCKET, CREATE_NEW_ROOM, JOIN_ROOM, LOG_OUT, NEW_WINNER, REFRESH_ROOM_STATUS, THROW_SOCKET_ERROR } from "./actions";
 import { getObjectFromLocalStorage } from '../../Utils';
 
 const initialState = {
@@ -7,7 +7,9 @@ const initialState = {
     isLoading: false,
     currentSocket: null,
     shotType: "",
-    room: getObjectFromLocalStorage("room")
+    room: getObjectFromLocalStorage("room"),
+    error: "",
+    showError: false
 };
 
 
@@ -24,7 +26,7 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 winner: action.winner
-            }
+            };
         }
         case CONNECTION_TO_SOCKET: {
             return {
@@ -48,6 +50,19 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 room: action.room
+            };
+        }
+        case THROW_SOCKET_ERROR: {
+            return {
+                ...state,
+                error: action.error,
+                showError: true
+            };
+        }
+        case CLEAR_ERROR: {
+            return {
+                ...state,
+                showError: false
             };
         }
         default:
