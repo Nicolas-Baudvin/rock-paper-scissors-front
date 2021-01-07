@@ -5,8 +5,9 @@ import reducers from './reducer';
  * Middlewares
  */
 import SocketMiddleware from './Socket/middleware';
+import OfflineMiddleware from './OfflineGame/middleware';
 
-const middlewares = applyMiddleware(SocketMiddleware);
+const middlewares = applyMiddleware(SocketMiddleware, OfflineMiddleware);
 
 const withReduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
