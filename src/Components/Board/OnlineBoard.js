@@ -35,7 +35,7 @@ const OnlineBoard = ({ room }) => {
         }
     }, [room && room.shots]);
 
-    return <main className="board">
+    return <>
         <Header isOnline={Boolean(room)} users={room.users} scores={room.scores} />
         {
             !userShotType && room.users.length === 2 && <Game handleClickShotType={handleClickShotType} isOnline={room.isOnline} users={room.users} owner={room.owner} />
@@ -46,7 +46,7 @@ const OnlineBoard = ({ room }) => {
         {
             userShotType && <OnlineResult userShotType={userShotType} handleClickReset={handleClickReset} friendShotType={friendShotType} />
         }
-    </main>
+    </>
 };
 
 OnlineBoard.propTypes = {

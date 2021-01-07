@@ -11,14 +11,15 @@ const OfflineBoard = () => {
 
     const handleClickReset = () => setUserShotType("");
 
-    return <main className="board"> <Header score={score} />
+    return <>
+        <Header score={score} />
         {
             !userShotType && <Game handleClickShotType={handleClickShotType} />
         }
         {
             userShotType && <Result userShotType={userShotType} setShotType={setUserShotType} handleClickReset={handleClickReset} setScore={setScore} score={score} />
         }
-    </main>
+    </>
 };
 
 export default OfflineBoard;
