@@ -3,9 +3,7 @@ import { useHistory } from "react-router-dom";
 const Footer = ({ handleClickRules }) => {
     const history = useHistory();
 
-    const handleClickBackToMenu = () => {
-        history.push("/");
-    };
+    const handleClickBackToMenu = () => history.push("/");
 
     return <div className="footer">
         <button onClick={handleClickRules} className="footer-button">
