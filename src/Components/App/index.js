@@ -6,6 +6,7 @@ import CreateRoom from '../CreateRoom';
 import OnlineGame from '../OnlineGame';
 import JoinRoom from '../JoinRoom';
 import NotFound from '../NotFound';
+import Popup from '../Popup';
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
             <NotFound />
           </Route>
         </Switch>
+        <Popup />
       </div>
     </Router>
   );
