@@ -5,6 +5,7 @@ import Menu from '../Menu';
 import CreateRoom from '../CreateRoom';
 import OnlineGame from '../OnlineGame';
 import JoinRoom from '../JoinRoom';
+import NotFound from '../NotFound';
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
           </Route>
           <Route exact path="/game/:name">
             <OnlineGame />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </div>

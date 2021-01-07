@@ -1,0 +1,41 @@
+.notfound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    p {
+        font-size: 50px;
+        color: #fff;
+    }
+}
+
+.button {
+    width: 200px;
+    border: 2px solid #fff;
+    padding: 0.5em 1em;
+    font-size: 21px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    background-color: transparent;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    margin: 3em 1em;
+
+    &:hover {
+        background-color: #fff;
+        color: hsl(229, 64%, 46%);
+    }
+
+    &:focus {
+        outline: none;
+        background-color: #fff;
+        color: hsl(229, 64%, 46%);
+    }
+}
