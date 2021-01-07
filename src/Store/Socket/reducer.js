@@ -1,4 +1,5 @@
 import { CONNECTION_TO_SOCKET, CREATE_NEW_ROOM, JOIN_ROOM, LOG_OUT, NEW_WINNER, REFRESH_ROOM_STATUS } from "./actions";
+import { getObjectFromLocalStorage } from '../../Utils';
 
 const initialState = {
     id: "",
@@ -6,7 +7,7 @@ const initialState = {
     isLoading: false,
     currentSocket: null,
     shotType: "",
-    room: localStorage.getItem("room") ? JSON.parse(localStorage.getItem("room")) : null
+    room: getObjectFromLocalStorage("room")
 };
 
 
@@ -32,7 +33,6 @@ const userReducer = (state = initialState, action) => {
             };
         }
         case REFRESH_ROOM_STATUS: {
-            console.log(action.room);
             return {
                 ...state,
                 room: action.room

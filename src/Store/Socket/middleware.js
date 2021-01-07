@@ -43,7 +43,6 @@ const Middleware = (store) => (next) => (action) => {
             });
 
             socket.on("game result", (room) => {
-                console.log(room);
                 store.dispatch(newWinner(room.winner));
                 store.dispatch(refreshRoomStatus(room));
             });
