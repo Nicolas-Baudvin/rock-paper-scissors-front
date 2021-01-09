@@ -11,7 +11,6 @@ const Menu = () => {
     const [username, setUsername] = useState(localStorage.getItem("user") ? localStorage.getItem("user") : "");
     const [error, setError] = useState("");
 
-
     const handleChange = (event) => {
         if (error)
         {
@@ -26,11 +25,12 @@ const Menu = () => {
 
     useEffect(() => {
         dispatch(logOut());
-    }, [])
+    }, []);
 
     return <div className="menu">
         <img src={`${process.env.PUBLIC_URL}/img/logo.svg`} alt="" />
         <input value={username} onChange={handleChange} className={cx("menu-input", { error: Boolean(error) })} type="text" placeholder="Username" />
+        <p> {error} </p>
         {
             username && <Buttons
                 setSelected={setSelected}

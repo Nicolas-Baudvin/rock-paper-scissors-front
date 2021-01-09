@@ -2,9 +2,9 @@ import OfflineHeader from "./OfflineHeader";
 import OnlineHeader from "./OnlineHeader";
 import PropTypes from "prop-types";
 
-const Header = ({ score, isOnline, users, scores }) => {
+const Header = ({ isOnline, users, scores }) => {
     return isOnline ? <OnlineHeader users={users} scores={scores} />
-        : <OfflineHeader score={score} />
+        : <OfflineHeader />
 };
 
 Header.propTypes = {

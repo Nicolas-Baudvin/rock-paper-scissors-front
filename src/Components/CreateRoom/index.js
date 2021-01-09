@@ -35,7 +35,7 @@ const CreateRoom = () => {
         {
             history.push(`/game/${room.name}`);
         }
-    }, [room])
+    }, [room]);
 
     useEffect(() => {
         dispatch(connectionToSocket());
