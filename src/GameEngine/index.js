@@ -25,7 +25,6 @@ export class GameEngine {
     };
 
     getWinner() {
-        this.checkWinner();
         return this.isPlayerWon;
     };
 
