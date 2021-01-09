@@ -55,7 +55,6 @@ OnlineBoard.propTypes = {
         name: PropTypes.string.isRequired,
         owner: PropTypes.shape({
             username: PropTypes.string.isRequired,
-            uniqueID: PropTypes.string.isRequired,
             socketID: PropTypes.string.isRequired
         }),
         scores: PropTypes.object,
