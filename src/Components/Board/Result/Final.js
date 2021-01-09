@@ -1,11 +1,14 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
 
-const Final = ({ isUserWin, handleClickReset }) => {
+const Final = ({ handleClickReset }) => {
+    const { winner } = useSelector((state) => state.offline);
+
     return <div className="board-result-final">
         <p>
             {
-                isUserWin && isUserWin !== "equal" ? "You win !" : isUserWin === "equal" ? "Equality" : "You loose"
+                winner && winner !== "equal" ? "You win !" : winner === "equal" ? "Equality" : "You loose"
             }
         </p>
         <button onClick={handleClickReset} className="board-result-final-restart">
@@ -15,7 +18,6 @@ const Final = ({ isUserWin, handleClickReset }) => {
 };
 
 Final.propTypes = {
-    isUserWin: PropTypes.bool.isRequired,
     handleClickReset: PropTypes.func.isRequired
 };
 

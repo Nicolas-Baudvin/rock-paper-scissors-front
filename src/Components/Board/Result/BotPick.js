@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 
-const BotPick = ({ isLoading, botShotType }) => {
+const BotPick = ({ botShotType }) => {
+    const { isLoading } = useSelector((state) => state.offline);
     return <div className="board-result-botpicked">
         <p>The bot picked</p>
         {
@@ -17,7 +19,6 @@ const BotPick = ({ isLoading, botShotType }) => {
 };
 
 BotPick.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
     botShotType: PropTypes.string.isRequired
 };
 

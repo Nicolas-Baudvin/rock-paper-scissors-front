@@ -1,43 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import BotPick from "./BotPick";
 import Final from "./Final";
 import UserPick from './userPick';
-import { BotEngine, GameEngine } from '../../../GameEngine';
 import PropTypes from 'prop-types';
+import { newShot } from "../../../Store/OfflineGame/actions";
+import { useDispatch, useSelector } from "react-redux";
 
-const Result = ({ userShotType, handleClickReset, setScore, score }) => {
-    const [isUserWin, setUserWin] = useState("");
-    const [isLoading, setLoading] = useState(true);
-    const [botShotType, setBotShotType] = useState("");
-
-    const incrementScore = (number) => setScore(score + number);
+const Result = ({ userShotType, handleClickReset }) => {
+    const dispatch = useDispatch();
+    const { winner, botShotType, isLoading } = useSelector((state) => state.offline);
 
     useEffect(() => {
-        setLoading(true);
-        const Bot = new BotEngine();
-        setBotShotType(Bot.getShotType());
+        dispatch(newShot(userShotType));
     }, []);
-
-    useEffect(() => {
-        setTimeout(() => {
-            const Engine = new GameEngine(userShotType, botShotType);
-            const isPlayerWin = Engine.getWinner();
-            setUserWin(isPlayerWin);
-
-            if (isPlayerWin && isPlayerWin !== "equal")
-                incrementScore(1);
-
-            setLoading(false);
-        }, 1000);
-    }, [botShotType]);
 
     return <div className="board-result">
         <div className="board-result-container">
             <UserPick userShotType={userShotType} />
-            <BotPick botShotType={botShotType} isLoading={isLoading} />
+            <BotPick botShotType={botShotType} />
         </div>
         {
-            !isLoading && <Final handleClickReset={handleClickReset} isUserWin={isUserWin} />
+            !isLoading && <Final handleClickReset={handleClickReset} isUserWin={winner} />
         }
     </div>
 };
@@ -45,8 +28,6 @@ const Result = ({ userShotType, handleClickReset, setScore, score }) => {
 Result.propTypes = {
     userShotType: PropTypes.string.isRequired,
     handleClickReset: PropTypes.func.isRequired,
-    setScore: PropTypes.func.isRequired,
-    score: PropTypes.number.isRequired,
 };
 
 export default Result;
