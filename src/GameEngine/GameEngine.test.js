@@ -35,7 +35,6 @@ describe("Engines", () => {
 
     it("should win 3 times", () => {
         shoots.forEach((shoot) => {
-            console.log(shoot[0], shoot[1]);
             Engine.setUserShotType(shoot[0]);
             Engine.setBotShotType(shoot[1]);
             Engine.checkWinner();
