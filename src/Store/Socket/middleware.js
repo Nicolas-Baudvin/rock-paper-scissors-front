@@ -47,12 +47,12 @@ const Middleware = (store) => (next) => (action) => {
             });
             
             socket.on("user join", (room) => {
-                console.log("Un utilisateur a rejoind la salle de jeu", room);
+                console.log("Un utilisateur a rejoind la salle de jeu");
                 store.dispatch(refreshRoomStatus(room));
             });
             
             socket.on("user leave", (room) => {
-                console.log("Un utilisateur a quitté le salon", room);
+                console.log("Un utilisateur a quitté le salon");
                 store.dispatch(refreshRoomStatus(room));
             });
             
