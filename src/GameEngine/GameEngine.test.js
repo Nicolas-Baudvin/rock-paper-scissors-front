@@ -11,16 +11,16 @@ const possibleShots = {
  */
 const shoots = [
     ["rock", "rock"],
-    ["rock", "paper"],
-    ["rock", "scissors"],
-
     ["paper", "paper"],
-    ["paper", "scissors"],
-    ["paper", "rock"],
-
     ["scissors", "scissors"],
-    ["scissors", "rock"],
+    
+    ["rock", "scissors"],
+    ["paper", "rock"],
     ["scissors", "paper"],
+    
+    ["scissors", "rock"],
+    ["rock", "paper"],
+    ["paper", "scissors"],
 ];
 
 describe("Engines", () => {
