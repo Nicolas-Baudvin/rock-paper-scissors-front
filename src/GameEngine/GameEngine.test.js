@@ -1,4 +1,4 @@
-import { GameEngine, BotEngine } from '.';
+import { GameEngine, BotEngine, winRulesObject } from '.';
 
 const possibleShots = {
     rock: "rock",
@@ -6,45 +6,39 @@ const possibleShots = {
     scissors: "scissors"
 };
 
+/**
+ * [userShot, botShot]
+ */
+const shoots = [
+    ["rock", "rock"],
+    ["rock", "paper"],
+    ["rock", "scissors"],
+
+    ["paper", "paper"],
+    ["paper", "scissors"],
+    ["paper", "rock"],
+
+    ["scissors", "scissors"],
+    ["scissors", "rock"],
+    ["scissors", "paper"],
+];
+
 describe("Engines", () => {
+    const Bot = new BotEngine();
+    const Engine = new GameEngine();
     it("should make a shot", () => {
-        const Bot = new BotEngine();
         Bot.shot();
         const shotType = Bot.getShotType();
         expect(shotType).toEqual(possibleShots[shotType]);
     });
 
-    it("should win the game", () => {
-        const Engine = new GameEngine();
-        Engine.setBotShotType("rock");
-        Engine.setUserShotType("paper");
-        const isPlayerWin = Engine.getWinner();
-        expect(isPlayerWin).toEqual(true);
-    });
-
-    it("should loose the game", () => {
-        const Engine = new GameEngine();
-        Engine.setBotShotType("rock");
-        Engine.setUserShotType("scissors");
-        const isPlayerWin = Engine.getWinner();
-        expect(isPlayerWin).toEqual(false);
-    });
-
-    it("should be equal", () => {
-        const Engine = new GameEngine();
-        Engine.setBotShotType("rock");
-        Engine.setUserShotType("rock");
-        const isPlayerWin = Engine.getWinner();
-        expect(isPlayerWin).toEqual("equal");
-    });
-
-    it("should increment score on win", () => {
-        const Engine = new GameEngine();
-        Engine.setBotShotType("rock");
-        Engine.setUserShotType("paper");
-        const isPlayerWin = Engine.getWinner();
-        const score = Engine.getScore();
-        expect(score).toEqual(1);
-        expect(isPlayerWin).toEqual(true);
+    it("should win 3 times", () => {
+        shoots.forEach((shoot) => {
+            console.log(shoot[0], shoot[1]);
+            Engine.setUserShotType(shoot[0]);
+            Engine.setBotShotType(shoot[1]);
+            Engine.checkWinner();
+        });
+        expect(Engine.getScore()).toEqual(3);
     });
 });
