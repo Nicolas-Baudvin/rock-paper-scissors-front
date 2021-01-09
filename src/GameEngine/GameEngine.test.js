@@ -1,4 +1,4 @@
-import { GameEngine, BotEngine, winRulesObject } from '.';
+import { GameEngine, BotEngine } from '.';
 
 const possibleShots = {
     rock: "rock",
@@ -26,6 +26,7 @@ const shoots = [
 describe("Engines", () => {
     const Bot = new BotEngine();
     const Engine = new GameEngine();
+
     it("should make a shot", () => {
         Bot.shot();
         const shotType = Bot.getShotType();
