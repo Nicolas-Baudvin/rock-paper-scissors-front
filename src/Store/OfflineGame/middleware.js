@@ -1,23 +1,24 @@
-import { newWinner, NEW_SCORE, NEW_SHOT, newScore, newBotShotType, stopLoading, RESET_GAME } from "./actions";
+import { newWinner, NEW_SHOT, newScore, newBotShotType, stopLoading, RESET_GAME } from "./actions";
 import { GameEngine, BotEngine } from "../../GameEngine";
 
-const Bot = new BotEngine();
-const Engine = new GameEngine();
+const bot = new BotEngine();
+const gameEngine = new GameEngine();
 
 const Middleware = (store) => (next) => (action) => {
     switch (action.type)
     {
         case NEW_SHOT: {
-            Bot.shot();
+            bot.shot();
 
             const userShotType = action.shotType;
-            const botShotType = Bot.getShotType();
+            const botShotType = bot.getShotType();
 
-            Engine.setBotShotType(botShotType);
-            Engine.setUserShotType(userShotType);
+            gameEngine.setBotShotType(botShotType);
+            gameEngine.setUserShotType(userShotType);
+            gameEngine.checkWinner();
             
-            const isPlayerWon = Engine.getWinner();            
-            const score = Engine.getScore();
+            const isPlayerWon = gameEngine.getWinner();            
+            const score = gameEngine.getScore();
                         
             setTimeout(() => {
                 store.dispatch(newBotShotType(botShotType));
@@ -30,7 +31,7 @@ const Middleware = (store) => (next) => (action) => {
             break;
         }
         case RESET_GAME: {
-            Engine.replay();
+            gameEngine.replay();
             next(action);
             break;
         }
