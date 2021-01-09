@@ -2,29 +2,56 @@ import { shotTypeObject, winRulesObject } from '../Utils';
 
 export class GameEngine {
     isPlayerWon = false;
-
-    constructor(userShotType, botShotType) {
-        this.userShotType = userShotType;
-        this.botTypeObject = botShotType;
-        this.checkWinner();
-    }
+    score = 0;
+    userShotType = "";
+    botShotType = "";
 
     checkWinner() {
-        this.isPlayerWon = winRulesObject[this.userShotType][this.botTypeObject];
-    }
+        this.isPlayerWon = winRulesObject[this.userShotType][this.botShotType];
+        if (this.isPlayerWon && this.isPlayerWon !== "equal")
+            this.incrementScore(1);
+    };
+
+    incrementScore(increment) {
+        this.score += increment;
+    };
+
+    resetScore() {
+        this.score = 0;
+    };
+
+    getScore() {
+        return this.score;
+    };
 
     getWinner() {
+        this.checkWinner();
         return this.isPlayerWon;
+    };
+
+    setUserShotType(shotType) {
+        this.userShotType = shotType;
+    };
+
+    setBotShotType(shotType) {
+        this.botShotType = shotType;
+    };
+
+    replay() {
+        this.botShotType = "";
+        this.userShotType = "";
+        this.isPlayerWon = "";
+    }
+
+    reset() {
+        this.resetScore();
+        this.replay();
     }
 };
 
 export class BotEngine {
     shothistory = [];
     shotType = "";
-
-    constructor() {
-        this.shot();
-    };
 
     makeRandomNumber() {
         return Math.floor(Math.random() * 3) + 1;
