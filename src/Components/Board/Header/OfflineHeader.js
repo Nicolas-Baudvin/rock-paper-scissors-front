@@ -1,6 +1,8 @@
-import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
 
-const OfflineHeader = ({ score }) => {
+const OfflineHeader = () => {
+    const { score } = useSelector((state) => state.offline);
+    
     return <header className="board-header">
         <div className="board-header-title">
             <img src={`${process.env.PUBLIC_URL}/img/logo.svg`} alt="Rock Paper Scissors" />
@@ -12,10 +14,6 @@ const OfflineHeader = ({ score }) => {
             </div>
         </div>
     </header>
-};
-
-OfflineHeader.propTypes = {
-    score: PropTypes.number.isRequired,
 };
 
 export default OfflineHeader;
