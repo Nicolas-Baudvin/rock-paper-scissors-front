@@ -1,11 +1,12 @@
-import { NEW_WINNER } from "../Socket/actions";
-import { INCREMENT_SCORE, NEW_SHOT } from "./actions";
+import { LOADING, NEW_BOT_SHOT_TYPE, NEW_SCORE, NEW_SHOT, RESET_GAME, STOP_LOADING, NEW_WINNER } from "./actions";
 
 const initialState = {
     userShotType: "",
     winner: "",
-    score: 0
-}
+    score: 0,
+    botShotType: "",
+    isLoading: true
+};
 
 const Reducer = (state = initialState, action) => {
     switch (action.type)
@@ -17,15 +18,44 @@ const Reducer = (state = initialState, action) => {
             };
         }
         case NEW_WINNER: {
+            console.log(action);
             return {
                 ...state,
                 winner: action.winner
             };
         }
-        case INCREMENT_SCORE: {
+        case NEW_SCORE: {
+            console.log(action);
             return {
                 ...state,
-                score: state.score + 1
+                score: action.score
+            };
+        }
+        case LOADING: {
+            return {
+                ...state,
+                isLoading: true
+            };
+        }
+        case STOP_LOADING: {
+            return {
+                ...state,
+                isLoading: false
+            };
+        }
+        case NEW_BOT_SHOT_TYPE: {
+            return {
+                ...state,
+                botShotType: action.shotType
+            };
+        }
+        case RESET_GAME: {
+            return {
+                ...state,
+                userShotType: "",
+                winner: "",
+                botShotType: "",
+                isLoading: true
             };
         }
         default:
