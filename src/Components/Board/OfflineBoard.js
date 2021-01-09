@@ -1,23 +1,28 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { resetGame } from "../../Store/OfflineGame/actions";
 import Game from "./Game";
 import Header from "./Header";
 import Result from "./Result";
 
 const OfflineBoard = () => {
-    const [score, setScore] = useState(0);
+    const dispatch = useDispatch();
     const [userShotType, setUserShotType] = useState("");
 
     const handleClickShotType = (type) => setUserShotType(type);
 
-    const handleClickReset = () => setUserShotType("");
+    const handleClickReset = () => {
+        dispatch(resetGame());
+        setUserShotType("")
+    };
 
     return <>
-        <Header score={score} />
+        <Header />
         {
             !userShotType && <Game handleClickShotType={handleClickShotType} />
         }
         {
-            userShotType && <Result userShotType={userShotType} setShotType={setUserShotType} handleClickReset={handleClickReset} setScore={setScore} score={score} />
+            userShotType && <Result userShotType={userShotType} setShotType={setUserShotType} handleClickReset={handleClickReset} />
         }
     </>
 };
