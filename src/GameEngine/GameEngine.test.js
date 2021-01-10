@@ -9,16 +9,16 @@ const possibleShots = {
 /**
  * [userShot, botShot]
  */
-const shoots = [
-    ["rock", "rock"],
+const shots = [
+    ["rock", "rock"], // equal
     ["paper", "paper"],
     ["scissors", "scissors"],
     
-    ["rock", "scissors"],
+    ["rock", "scissors"], // win
     ["paper", "rock"],
     ["scissors", "paper"],
     
-    ["scissors", "rock"],
+    ["scissors", "rock"], // loose
     ["rock", "paper"],
     ["paper", "scissors"],
 ];
@@ -34,7 +34,7 @@ describe("Engines", () => {
     });
 
     it("should win 3 times", () => {
-        shoots.forEach((shoot) => {
+        shots.forEach((shoot) => {
             Engine.setUserShotType(shoot[0]);
             Engine.setBotShotType(shoot[1]);
             Engine.checkWinner();
