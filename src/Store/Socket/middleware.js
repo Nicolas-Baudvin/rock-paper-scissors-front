@@ -1,4 +1,17 @@
-import { clearError, CONNECTION_TO_SOCKET, CREATE_NEW_ROOM, JOIN_ROOM, LOG_OUT, newWinner, PLAY_AGAIN, refreshRoomStatus, REFRESH_ROOM_STATUS, SEND_SHOT_TYPE, throwSocketError, THROW_SOCKET_ERROR } from "./actions";
+import {
+    clearError,
+    CONNECTION_TO_SOCKET,
+    CREATE_NEW_ROOM,
+    JOIN_ROOM, LOG_OUT,
+    newWinner,
+    PLAY_AGAIN,
+    refreshRoomStatus,
+    REFRESH_ROOM_STATUS,
+    SEND_SHOT_TYPE,
+    throwSocketError,
+    THROW_SOCKET_ERROR
+} from "./actions";
+import { getUsernameFromLocalStorage } from '../../Utils';
 import io from 'socket.io-client';
 
 let socket = null;
@@ -21,7 +34,7 @@ const Middleware = (store) => (next) => (action) => {
             break;
         }
         case SEND_SHOT_TYPE: {
-            const username = localStorage.getItem("user");
+            const username = getUsernameFromLocalStorage("user");
             const { shotType } = action;
             const roomName = store.getState().socket.room.name;
 
@@ -32,7 +45,7 @@ const Middleware = (store) => (next) => (action) => {
         case CONNECTION_TO_SOCKET: {
             socket = io.connect(process.env.REACT_APP_SOCKET_URL);
             action.socket = socket;
-            const username = localStorage.getItem("user")
+            const username = getUsernameFromLocalStorage("user");
             socket.emit("new user", username);
 
             socket.on("user created", (socketID) => localStorage.setItem("socketID", socketID));
@@ -45,17 +58,17 @@ const Middleware = (store) => (next) => (action) => {
                 store.dispatch(newWinner(room.winner));
                 store.dispatch(refreshRoomStatus(room));
             });
-            
+
             socket.on("user join", (room) => {
                 console.log("Un utilisateur a rejoind la salle de jeu");
                 store.dispatch(refreshRoomStatus(room));
             });
-            
+
             socket.on("user leave", (room) => {
                 console.log("Un utilisateur a quitté le salon");
                 store.dispatch(refreshRoomStatus(room));
             });
-            
+
             socket.on("fail creating room", (error) => store.dispatch(throwSocketError(error)));
 
             socket.on("fail join", (error) => store.dispatch(throwSocketError(error)));
@@ -69,7 +82,7 @@ const Middleware = (store) => (next) => (action) => {
         }
         case JOIN_ROOM: {
             const { roomName } = action;
-            const username = localStorage.getItem("user");
+            const username = getUsernameFromLocalStorage("user");
 
             socket.emit("join room", { roomName, username });
 
@@ -82,7 +95,7 @@ const Middleware = (store) => (next) => (action) => {
         }
         case CREATE_NEW_ROOM: {
             const { roomName } = action;
-            const username = localStorage.getItem("user");
+            const username = getUsernameFromLocalStorage("user");
 
             socket.emit("create room", { roomName, username });
 
@@ -99,7 +112,7 @@ const Middleware = (store) => (next) => (action) => {
             }, 3000);
             next(action);
             break;
-        } 
+        }
         default: {
             next(action);
             break;
