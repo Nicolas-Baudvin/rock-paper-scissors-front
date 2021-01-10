@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { resetGame } from "../../Store/OfflineGame/actions";
+import { replayGame } from "../../Store/OfflineGame/actions";
 import Game from "./Game";
 import Header from "./Header";
 import Result from "./Result";
@@ -12,7 +12,7 @@ const OfflineBoard = () => {
     const handleClickShotType = (type) => setUserShotType(type);
 
     const handleClickReset = () => {
-        dispatch(resetGame());
+        dispatch(replayGame());
         setUserShotType("")
     };
 
