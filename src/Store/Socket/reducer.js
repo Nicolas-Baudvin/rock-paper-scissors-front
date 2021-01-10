@@ -1,5 +1,5 @@
 import { CLEAR_ERROR, CONNECTION_TO_SOCKET, CREATE_NEW_ROOM, JOIN_ROOM, LOG_OUT, NEW_WINNER, REFRESH_ROOM_STATUS, THROW_SOCKET_ERROR } from "./actions";
-import { getObjectFromLocalStorage } from '../../Utils';
+import { getRoomFromLocalStorage } from '../../Utils';
 
 const initialState = {
     id: "",
@@ -7,7 +7,7 @@ const initialState = {
     isLoading: false,
     currentSocket: null,
     shotType: "",
-    room: getObjectFromLocalStorage("room"),
+    room: getRoomFromLocalStorage("room"),
     error: "",
     showError: false
 };
