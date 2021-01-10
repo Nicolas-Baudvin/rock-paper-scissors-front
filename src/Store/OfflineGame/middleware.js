@@ -1,4 +1,4 @@
-import { newWinner, NEW_SHOT, newScore, newBotShotType, stopLoading, RESET_GAME } from "./actions";
+import { newWinner, NEW_SHOT, newScore, newBotShotType, stopLoading, REPLAY_GAME } from "./actions";
 import { GameEngine, BotEngine } from "../../GameEngine";
 
 const bot = new BotEngine();
@@ -30,7 +30,7 @@ const Middleware = (store) => (next) => (action) => {
             next(action);
             break;
         }
-        case RESET_GAME: {
+        case REPLAY_GAME: {
             gameEngine.replay();
             next(action);
             break;

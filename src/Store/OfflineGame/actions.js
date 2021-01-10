@@ -4,10 +4,10 @@ export const NEW_SCORE = "offline/NEW_SCORE";
 export const NEW_BOT_SHOT_TYPE = "offline/NEW_BOT_SHOT_TYPE";
 export const LOADING = "offline/LOADING";
 export const STOP_LOADING = "offline/STOP_LOADING";
-export const RESET_GAME = "offline/RESET_GAME";
+export const REPLAY_GAME = "offline/REPLAY_GAME";
 
-export const resetGame = () => ({
-    type: RESET_GAME
+export const replayGame = () => ({
+    type: REPLAY_GAME
 });
 
 export const loading = () => ({
