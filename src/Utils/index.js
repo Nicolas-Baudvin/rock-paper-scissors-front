@@ -1,11 +1,11 @@
 import shotTypeObject from './shotTypeObject';
 import winRulesObject from './winRulesObject';
-import getStringFromLocalStorage from './getStringFromLocalStorage';
-import getObjectFromLocalStorage from './getObjectFromLocalStorage';
+import getUsernameFromLocalStorage from './getUsernameFromLocalStorage';
+import getRoomFromLocalStorage from './getRoomFromLocalStorage';
 
 export {
     shotTypeObject,
     winRulesObject,
-    getStringFromLocalStorage,
-    getObjectFromLocalStorage
+    getUsernameFromLocalStorage,
+    getRoomFromLocalStorage
 };
