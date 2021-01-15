@@ -9,4 +9,4 @@ It's a simple game you can play in real time with one friend.
 
 ## Technologies used
 
-React - Sass - Node.js - Express.js - Socket.io
+Typescript - React - Sass - Node.js - Express.js - Socket.io
