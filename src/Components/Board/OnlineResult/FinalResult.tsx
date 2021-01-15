@@ -1,0 +1,25 @@
+import { useSelector } from "react-redux";
+import PropTypes from 'prop-types';
+import { RootState } from "../../../Store/reducer";
+
+interface Props {
+    handleClickReset: (e: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+const FinalResult = ({ handleClickReset }: Props) => {
+    const { winner } = useSelector((state: RootState) => state.socket);
+    return <div className="board-result-final">
+        <p>
+            {winner !== "equal" ? `Winner is ${winner}` : "Equality !"}
+        </p>
+        <button onClick={handleClickReset} className="board-result-final-restart">
+            Play Again
+        </button>
+    </div>
+};
+
+FinalResult.propTypes = {
+    handleClickReset: PropTypes.func.isRequired
+};
+
+export default FinalResult;
