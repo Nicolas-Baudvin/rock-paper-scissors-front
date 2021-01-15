@@ -1,4 +1,4 @@
-import { DefaultRootState, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../../Store/reducer";
 
 const OfflineHeader = () => {

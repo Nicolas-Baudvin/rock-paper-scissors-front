@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { FriendShotInfo } from '../../../Store/Socket/types';
 
 interface Props {
@@ -19,10 +18,6 @@ const FriendPick = ({ friendShotType }: Props) => {
                 </div>
         }
     </div>
-};
-
-FriendPick.propTypes = {
-    friendShotType: PropTypes.string
 };
 
 export default FriendPick;

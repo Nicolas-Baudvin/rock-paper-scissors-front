@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 interface Props {
     userShotType: string
 }
@@ -11,10 +9,6 @@ const OwnerPick = ({ userShotType }: Props) => {
             <img src={`${process.env.PUBLIC_URL}/img/icon-${userShotType}.svg`} alt="" />
         </div>
     </div>
-};
-
-OwnerPick.propTypes = {
-    userShotType: PropTypes.string.isRequired
 };
 
 export default OwnerPick;

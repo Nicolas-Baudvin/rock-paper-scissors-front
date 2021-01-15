@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../Store/reducer';
 
@@ -18,10 +17,6 @@ const Final = ({ handleClickReset }: Props) => {
             Play Again
         </button>
     </div>
-};
-
-Final.propTypes = {
-    handleClickReset: PropTypes.func.isRequired
 };
 
 export default Final;

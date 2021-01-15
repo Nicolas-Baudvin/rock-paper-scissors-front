@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../Store/reducer';
 
@@ -21,10 +20,6 @@ const BotPick = ({ botShotType }: Props) => {
                 </div>
         }
     </div>
-};
-
-BotPick.propTypes = {
-    botShotType: PropTypes.string.isRequired
 };
 
 export default BotPick;

@@ -1,10 +1,9 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { playAgain, sendShotType } from "../../Store/Socket/actions";
 import Game from "./Game";
 import Header from "./Header";
 import OnlineResult from './OnlineResult';
-import PropTypes from 'prop-types';
 import { RootState } from "../../Store/reducer";
 import { FriendShotInfo } from "../../Store/Socket/types";
 

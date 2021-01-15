@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import BotPick from "./BotPick";
 import Final from "./Final";
 import UserPick from './userPick';
-import PropTypes from 'prop-types';
 import { newShot } from "../../../Store/OfflineGame/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../Store/reducer";
@@ -28,11 +27,6 @@ const Result = ({ userShotType, handleClickReset }: Props) => {
             !isLoading && <Final handleClickReset={handleClickReset} />
         }
     </div>
-};
-
-Result.propTypes = {
-    userShotType: PropTypes.string.isRequired,
-    handleClickReset: PropTypes.func.isRequired,
 };
 
 export default Result;
