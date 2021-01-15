@@ -9,33 +9,33 @@ export const STOP_LOADING = "offline/STOP_LOADING";
 export const REPLAY_GAME = "offline/REPLAY_GAME";
 
 export const replayGame = (): OfflineAction => ({
-    type: REPLAY_GAME
+  type: REPLAY_GAME,
 });
 
 export const loading = (): OfflineAction => ({
-    type: LOADING
+  type: LOADING,
 });
 
 export const stopLoading = (): OfflineAction => ({
-    type: STOP_LOADING
+  type: STOP_LOADING,
 });
 
 export const newShot = (shotType: string): OfflineAction => ({
-    type: NEW_SHOT,
-    shotType
+  type: NEW_SHOT,
+  shotType,
 });
 
 export const newBotShotType = (shotType: string): OfflineAction => ({
-    type: NEW_BOT_SHOT_TYPE,
-    shotType
+  type: NEW_BOT_SHOT_TYPE,
+  shotType,
 });
 
 export const newWinner = (winner: string | boolean): OfflineAction => ({
-    type: NEW_WINNER,
-    winner
+  type: NEW_WINNER,
+  winner,
 });
 
 export const newScore = (score: number): OfflineAction => ({
-    type: NEW_SCORE,
-    score
+  type: NEW_SCORE,
+  score,
 });

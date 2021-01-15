@@ -63,7 +63,7 @@ interface LogOutAction {
 }
 
 interface PlayAgainAction {
-  type: typeof PLAY_AGAIN
+  type: typeof PLAY_AGAIN;
 }
 
 interface NewWinnerAction {

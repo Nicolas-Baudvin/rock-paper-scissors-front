@@ -1,10 +1,10 @@
 import Board from "../Board";
-import './style.scss';
+import "./style.scss";
 
-const OnlineGame = () => {
-    return <div className="online">
-        <Board />
-    </div>
-};
+const OnlineGame = () => (
+  <div className="online">
+    <Board />
+  </div>
+);
 
 export default OnlineGame;

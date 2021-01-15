@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from "redux";
 
-import socket from './Socket/reducer';
-import offline from './OfflineGame/reducer';
+import socket from "./Socket/reducer";
+import offline from "./OfflineGame/reducer";
 
 export const rootReducer = combineReducers({
-    socket,
-    offline
+  socket,
+  offline,
 });
 
 export type RootState = ReturnType<typeof rootReducer>;

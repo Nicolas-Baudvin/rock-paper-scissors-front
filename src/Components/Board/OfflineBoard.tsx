@@ -6,25 +6,28 @@ import Header from "./Header";
 import Result from "./Result";
 
 const OfflineBoard = () => {
-    const dispatch = useDispatch();
-    const [userShotType, setUserShotType] = useState("");
+  const dispatch = useDispatch();
+  const [userShotType, setUserShotType] = useState("");
 
-    const handleClickShotType = (type: string): void => setUserShotType(type);
+  const handleClickShotType = (type: string): void => setUserShotType(type);
 
-    const handleClickReset = () => {
-        dispatch(replayGame());
-        setUserShotType("")
-    };
+  const handleClickReset = () => {
+    dispatch(replayGame());
+    setUserShotType("");
+  };
 
-    return <>
-        <Header />
-        {
-            !userShotType && <Game handleClickShotType={handleClickShotType} />
-        }
-        {
-            userShotType && <Result userShotType={userShotType} handleClickReset={handleClickReset} />
-        }
+  return (
+    <>
+      <Header />
+      {!userShotType && <Game handleClickShotType={handleClickShotType} />}
+      {userShotType && (
+        <Result
+          userShotType={userShotType}
+          handleClickReset={handleClickReset}
+        />
+      )}
     </>
+  );
 };
 
 export default OfflineBoard;

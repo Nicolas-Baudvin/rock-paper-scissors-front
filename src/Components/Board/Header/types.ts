@@ -1,7 +1,7 @@
 export interface User {
-    username: string
+  username: string;
 }
 
 export interface Score {
-    [index: string]: number | undefined
+  [index: string]: number | undefined;
 }

@@ -1,12 +1,12 @@
-import Board from '../Board';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './style.scss';
-import Menu from '../Menu';
-import CreateRoom from '../CreateRoom';
-import OnlineGame from '../OnlineGame';
-import JoinRoom from '../JoinRoom';
-import NotFound from '../NotFound';
-import Popup from '../Popup';
+import Board from "../Board";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./style.scss";
+import Menu from "../Menu";
+import CreateRoom from "../CreateRoom";
+import OnlineGame from "../OnlineGame";
+import JoinRoom from "../JoinRoom";
+import NotFound from "../NotFound";
+import Popup from "../Popup";
 
 const App = () => {
   return (
@@ -39,6 +39,6 @@ const App = () => {
       </div>
     </Router>
   );
-}
+};
 
 export default App;

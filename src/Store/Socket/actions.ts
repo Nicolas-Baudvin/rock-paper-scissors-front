@@ -12,50 +12,50 @@ export const PLAY_AGAIN = "socket/PLAY_AGAIN";
 export const CLEAR_ERROR = "socket/CLEAR_ERROR";
 
 export const clearError = (): SocketActions => ({
-    type: CLEAR_ERROR
+  type: CLEAR_ERROR,
 });
 
 export const playAgain = (): SocketActions => ({
-    type: PLAY_AGAIN
+  type: PLAY_AGAIN,
 });
 
 export const newWinner = (winner: string): SocketActions => ({
-    type: NEW_WINNER,
-    winner
+  type: NEW_WINNER,
+  winner,
 });
 
 export const sendShotType = (shotType: string): SocketActions => ({
-    type: SEND_SHOT_TYPE,
-    shotType
+  type: SEND_SHOT_TYPE,
+  shotType,
 });
 
 export const throwSocketError = (error: string): SocketActions => ({
-    type: THROW_SOCKET_ERROR,
-    error
+  type: THROW_SOCKET_ERROR,
+  error,
 });
 
 export const refreshRoomStatus = (room: Room): SocketActions => ({
-    type: REFRESH_ROOM_STATUS,
-    room
+  type: REFRESH_ROOM_STATUS,
+  room,
 });
 
 export const logOut = (): SocketActions => ({
-    type: LOG_OUT
+  type: LOG_OUT,
 });
 
 export const joinRoom = (roomName: string): SocketActions => ({
-    type: JOIN_ROOM,
-    room: null,
-    roomName
+  type: JOIN_ROOM,
+  room: null,
+  roomName,
 });
 
 export const createNewRoom = (roomName: string): SocketActions => ({
-    type: CREATE_NEW_ROOM,
-    roomName,
-    room: null
+  type: CREATE_NEW_ROOM,
+  roomName,
+  room: null,
 });
 
 export const connectionToSocket = (): SocketActions => ({
-    type: CONNECTION_TO_SOCKET,
-    socket: null
+  type: CONNECTION_TO_SOCKET,
+  socket: null,
 });
