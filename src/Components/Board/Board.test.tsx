@@ -36,10 +36,7 @@ describe("<Board /> Online", () => {
     (useSelectorMock as jest.Mock).mockImplementation(() => ({
       room: mockedRoom,
     }));
-    (useStateMock as jest.Mock).mockImplementation((init) => [
-      false,
-      setState,
-    ]);
+    (useStateMock as jest.Mock).mockImplementation((init) => [false, setState]);
   });
 
   it("should render", () => {
@@ -59,6 +56,38 @@ describe("<Board /> Online", () => {
 
   it("should not render the Modale component", () => {
     const wrapper = shallow(<Board />);
-    expect(wrapper.contains(<Modale handleClickRules={setState} />)).toEqual(false);
+    expect(wrapper.find(Modale).length).toBeFalsy();
+  });
+});
+
+describe("<Board /> Offline", () => {
+  const setState = jest.fn();
+
+  beforeEach(() => {
+    (useSelectorMock as jest.Mock).mockImplementation(() => ({
+      room: null,
+    }));
+    (useStateMock as jest.Mock).mockImplementation((init) => [true, setState]);
+  });
+
+  it("should render", () => {
+    const wrapper = shallow(<Board />);
+    expect(wrapper).toBeTruthy();
+  });
+
+  it("should render the Offline component", () => {
+    const wrapper = shallow(<Board />);
+    expect(wrapper.contains(<OfflineBoard />)).toEqual(true);
+  });
+
+  it("should not render the OfflineBoard component", () => {
+    const wrapper = shallow(<Board />);
+    expect(wrapper.contains(<OnlineBoard />)).toEqual(false);
+  });
+
+  it("should render the Modale component", () => {
+    const wrapper = shallow(<Board />);
+    console.log(wrapper.debug())
+    expect(wrapper.find(Modale).length).toBeTruthy();
   });
 });
