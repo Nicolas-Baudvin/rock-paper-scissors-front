@@ -47,7 +47,7 @@ describe("<CreateRoom /> no connected", () => {
       currentSocket: { connected: false },
       room: null,
     }));
-    (useStateMock as jest.Mock).mockImplementation((init) => [init, setState]);
+    (useStateMock as jest.Mock).mockImplementation((init) => ["roomName", setState]);
   });
 
   it("should render", () => {
