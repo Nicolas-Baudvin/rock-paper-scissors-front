@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { RootState } from "../../Store/reducer";
-import { connectionToSocket, createNewRoom } from "../../Store/Socket/actions";
+import {
+  connectionToSocket,
+  createNewRoom,
+  throwSocketError,
+} from "../../Store/Socket/actions";
 
 import "./style.scss";
 
@@ -19,6 +23,12 @@ const CreateRoom = () => {
     e.preventDefault();
     if (currentSocket?.connected && roomName) {
       dispatch(createNewRoom(roomName));
+    } else {
+      dispatch(
+        throwSocketError(
+          "Create fail : You're not connected, refresh page or back to menu, then restart. if problem persist, call an admin"
+        )
+      );
     }
   };
 
