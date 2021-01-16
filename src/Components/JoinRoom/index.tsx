@@ -20,7 +20,10 @@ const JoinRoom = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (currentSocket?.connected && roomName) {
+    if (!roomName)
+      return dispatch(throwSocketError("Room name is not valid"));
+
+    if (currentSocket?.connected) {
       dispatch(joinRoom(roomName));
     } else {
       dispatch(
