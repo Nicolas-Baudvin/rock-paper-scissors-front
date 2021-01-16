@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { RootState } from "../../Store/reducer";
-import { connectionToSocket, joinRoom } from "../../Store/Socket/actions";
+import {
+  connectionToSocket,
+  joinRoom,
+  throwSocketError,
+} from "../../Store/Socket/actions";
 
 import "./style.scss";
 
@@ -18,6 +22,12 @@ const JoinRoom = () => {
     e.preventDefault();
     if (currentSocket?.connected && roomName) {
       dispatch(joinRoom(roomName));
+    } else {
+      dispatch(
+        throwSocketError(
+          "Join fail : You're not connected, refresh page or back to menu, then restart. if problem persist, call an admin"
+        )
+      );
     }
   };
 
