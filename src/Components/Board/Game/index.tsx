@@ -1,3 +1,5 @@
+import arrayButton from "./utils/arrayButtons";
+
 interface Props {
   handleClickShotType: (shotType: string) => void;
 }
@@ -11,26 +13,15 @@ const Game = ({ handleClickShotType }: Props) => {
         alt="Board"
       />
 
-      <div
-        onClick={() => handleClickShotType("rock")}
-        className="board-game-rock"
-      >
-        <img src={`${process.env.PUBLIC_URL}/img/icon-rock.svg`} alt="" />
-      </div>
-
-      <div
-        onClick={() => handleClickShotType("paper")}
-        className="board-game-paper"
-      >
-        <img src={`${process.env.PUBLIC_URL}/img/icon-paper.svg`} alt="" />
-      </div>
-
-      <div
-        onClick={() => handleClickShotType("scissors")}
-        className="board-game-scissors"
-      >
-        <img src={`${process.env.PUBLIC_URL}/img/icon-scissors.svg`} alt="" />
-      </div>
+      {arrayButton.map((button, index) => (
+        <div
+          key={index}
+          onClick={() => handleClickShotType(button.shotType)}
+          className={button.classname}
+        >
+          <img src={`${process.env.PUBLIC_URL}/img/icon-${button.shotType}.svg`} alt={button.shotType} />
+        </div>
+      ))}
     </div>
   );
 };
