@@ -87,7 +87,6 @@ describe("<Board /> Offline", () => {
 
   it("should render the Modale component", () => {
     const wrapper = shallow(<Board />);
-    console.log(wrapper.debug())
     expect(wrapper.find(Modale).length).toBeTruthy();
   });
 });
