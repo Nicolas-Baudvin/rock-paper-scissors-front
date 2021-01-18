@@ -9,7 +9,7 @@ const Final = ({ handleClickReset }: Props) => {
   const { winner } = useSelector((state: RootState) => state.offline);
   return (
     <div className="board-result-final">
-      <p>
+      <p className="board-result-final-winner">
         {winner && winner !== "equal"
           ? "You win !"
           : winner === "equal"

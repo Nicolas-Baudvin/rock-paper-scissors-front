@@ -1,5 +1,6 @@
 import { shallow } from "enzyme";
 import { useSelector as useSelectorMock } from "react-redux";
+import Header from ".";
 import OfflineHeader from "./OfflineHeader";
 import OnlineHeader from "./OnlineHeader";
 import { Score, User } from "./types";
@@ -8,6 +9,26 @@ jest.mock("react-redux", () => ({
   ...jest.requireActual("react-redux"),
   useSelector: jest.fn(),
 }));
+
+describe("Header", () => {
+  it("should render OfflineHeader", () => {
+    const wrapper = shallow(<Header />);
+    expect(wrapper.find(OfflineHeader).length).toBeTruthy();
+    expect(wrapper.find(OnlineHeader).length).toBeFalsy();
+  });
+
+  it("should render OnlineHeader", () => {
+    const wrapper = shallow(
+      <Header
+        isOnline
+        users={[{ username: "playerOne" }]}
+        scores={{ playerOne: 0 }}
+      />
+    );
+    expect(wrapper.find(OfflineHeader).length).toBeFalsy();
+    expect(wrapper.find(OnlineHeader).length).toBeTruthy();
+  });
+});
 
 describe("<OfflineHeader />", () => {
   const score = 0;
