@@ -11,10 +11,10 @@ const Footer = ({ handleClickRules }: Props) => {
 
   return (
     <div className="footer">
-      <button onClick={handleClickRules} className="footer-button">
+      <button onClick={handleClickRules} className="footer-button rules">
         Rules
       </button>
-      <button onClick={handleClickBackToMenu} className="footer-button">
+      <button onClick={handleClickBackToMenu} className="footer-button menu">
         Menu
       </button>
     </div>
