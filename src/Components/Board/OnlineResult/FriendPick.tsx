@@ -12,7 +12,8 @@ const FriendPick = ({ friendShotType }: Props) => {
         <div className={`board-result-${friendShotType.shotType}`}>
           <img
             src={`${process.env.PUBLIC_URL}/img/icon-${friendShotType.shotType}.svg`}
-            alt=""
+            alt={friendShotType.shotType}
+            className="board-result-botpicked-img"
           />
         </div>
       )}

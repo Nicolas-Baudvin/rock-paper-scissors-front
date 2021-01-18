@@ -9,7 +9,8 @@ const OwnerPick = ({ userShotType }: Props) => {
       <div className={`board-result-${userShotType}`}>
         <img
           src={`${process.env.PUBLIC_URL}/img/icon-${userShotType}.svg`}
-          alt=""
+          alt={userShotType}
+          className="board-result-picked-img"
         />
       </div>
     </div>
