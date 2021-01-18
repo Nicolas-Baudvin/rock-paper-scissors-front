@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import { Score, User } from "./types";
 
 interface Props {
@@ -38,11 +37,6 @@ const OnlineHeader = ({ users, scores }: Props) => {
       </div>
     </header>
   );
-};
-
-OnlineHeader.propTypes = {
-  users: PropTypes.array.isRequired,
-  scores: PropTypes.object.isRequired,
 };
 
 export default OnlineHeader;
