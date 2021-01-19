@@ -4,6 +4,7 @@ import {
   CREATE_NEW_ROOM,
   JOIN_ROOM,
   LOG_OUT,
+  newSocket,
   newWinner,
   PLAY_AGAIN,
   refreshRoomStatus,
@@ -49,8 +50,10 @@ const middleware: Middleware<{}, RootState> = (store) => (next) => (action) => {
       const url: string | undefined = process.env.REACT_APP_SOCKET_URL || "";
 
       socket = io.connect(url);
-      action.socket = socket;
+      store.dispatch(newSocket(socket));
+
       const username = getUsernameFromLocalStorage("user");
+
       socket.emit("new user", username);
 
       socket.on("user created", (socketID: string) =>
@@ -92,10 +95,6 @@ const middleware: Middleware<{}, RootState> = (store) => (next) => (action) => {
       next(action);
       break;
     }
-    case REFRESH_ROOM_STATUS: {
-      next(action);
-      break;
-    }
     case JOIN_ROOM: {
       const { roomName } = action;
       const username = getUsernameFromLocalStorage("user");
@@ -104,7 +103,7 @@ const middleware: Middleware<{}, RootState> = (store) => (next) => (action) => {
 
       socket?.on("room joined", (room: Room) => {
         localStorage.setItem("room", JSON.stringify(room));
-        action.room = room;
+        store.dispatch(refreshRoomStatus(room));
         next(action);
       });
       break;
@@ -117,7 +116,7 @@ const middleware: Middleware<{}, RootState> = (store) => (next) => (action) => {
 
       socket?.on("room created", (room: Room) => {
         localStorage.setItem("room", JSON.stringify(room));
-        action.room = room;
+        store.dispatch(refreshRoomStatus(room));
         next(action);
       });
       break;
