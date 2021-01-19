@@ -4,6 +4,7 @@ import {
   CREATE_NEW_ROOM,
   JOIN_ROOM,
   LOG_OUT,
+  NEW_SOCKET,
   NEW_WINNER,
   REFRESH_ROOM_STATUS,
   THROW_SOCKET_ERROR,
@@ -42,22 +43,10 @@ const userReducer = (
     case CONNECTION_TO_SOCKET: {
       return {
         ...state,
-        currentSocket: action.socket,
+        connected: true
       };
     }
     case REFRESH_ROOM_STATUS: {
-      return {
-        ...state,
-        room: action.room,
-      };
-    }
-    case JOIN_ROOM: {
-      return {
-        ...state,
-        room: action.room,
-      };
-    }
-    case CREATE_NEW_ROOM: {
       return {
         ...state,
         room: action.room,
@@ -74,6 +63,12 @@ const userReducer = (
       return {
         ...state,
         showError: false,
+      };
+    }
+    case NEW_SOCKET: {
+      return {
+        ...state,
+        currentSocket: action.socket,
       };
     }
     default:
