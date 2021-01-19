@@ -1,6 +1,12 @@
 import { getRoomFromLocalStorage } from "../../../Utils";
 import {
   clearError,
+  connectionToSocket,
+  createNewRoom,
+  CREATE_NEW_ROOM,
+  JOIN_ROOM,
+  logOut,
+  newSocket,
   newWinner,
   refreshRoomStatus,
   throwSocketError,
@@ -85,6 +91,46 @@ describe("Socket reducer", () => {
       room: null,
       error: "",
       showError: false,
+    });
+  });
+
+  it("should return the state with new socket", () => {
+    expect(reducer(undefined, newSocket(null))).toEqual({
+      id: "",
+      username: "",
+      isLoading: false,
+      currentSocket: null,
+      shotType: "",
+      room: null,
+      error: "",
+      showError: false,
+    });
+  });
+
+  it("should return the state with no socket and room", () => {
+    expect(reducer(undefined, logOut())).toEqual({
+      id: "",
+      username: "",
+      isLoading: false,
+      currentSocket: null,
+      shotType: "",
+      room: null,
+      error: "",
+      showError: false,
+    });
+  });
+
+  it("should return the state with socket connected", () => {
+    expect(reducer(undefined, connectionToSocket())).toEqual({
+      id: "",
+      username: "",
+      isLoading: false,
+      currentSocket: null,
+      shotType: "",
+      room: null,
+      error: "",
+      showError: false,
+      connected: true,
     });
   });
 });

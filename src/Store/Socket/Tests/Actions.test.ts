@@ -95,4 +95,12 @@ describe("Socket actions", () => {
     };
     expect(actions.clearError()).toEqual(expectedAction);
   });
+
+  it("should create an action to store the new socket", () => {
+    const expectedAction: SocketActions = {
+      type: actions.NEW_SOCKET,
+      socket: null
+    }
+    expect(actions.newSocket(null)).toEqual(expectedAction);
+  });
 });
