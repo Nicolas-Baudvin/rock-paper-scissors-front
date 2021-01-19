@@ -5,6 +5,7 @@ import {
   CREATE_NEW_ROOM,
   JOIN_ROOM,
   LOG_OUT,
+  NEW_SOCKET,
   NEW_WINNER,
   PLAY_AGAIN,
   REFRESH_ROOM_STATUS,
@@ -52,11 +53,17 @@ export interface SocketState {
   error: string | undefined;
   showError: boolean;
   winner?: string | Boolean;
+  connected?: boolean
 }
 
 /**
  * Actions
  */
+
+ interface NewSocketAction {
+   type: typeof NEW_SOCKET,
+   socket: SocketIOClient.Socket | null
+ }
 
 interface LogOutAction {
   type: typeof LOG_OUT;
@@ -117,4 +124,5 @@ export type SocketActions =
   | ClearErrorAction
   | SendShotTypeAction
   | LogOutAction
-  | PlayAgainAction;
+  | PlayAgainAction
+  | NewSocketAction;
