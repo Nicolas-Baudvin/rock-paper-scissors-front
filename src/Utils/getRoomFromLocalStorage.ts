@@ -6,7 +6,7 @@ const getRoomFromLocalStorage = (key: string) => {
   if (!stringifyRoom) {
     return null;
   }
-  const room: Room | undefined | null = JSON.parse(stringifyRoom);
+  const room: Room = JSON.parse(stringifyRoom);
   if (!room) {
     return null;
   }
