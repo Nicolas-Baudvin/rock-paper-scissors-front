@@ -10,6 +10,12 @@ export const SEND_SHOT_TYPE = "socket/SEND_SHOT_TYPE";
 export const NEW_WINNER = "socket/NEW_WINNER";
 export const PLAY_AGAIN = "socket/PLAY_AGAIN";
 export const CLEAR_ERROR = "socket/CLEAR_ERROR";
+export const NEW_SOCKET = "socket/NEW_SOCKET";
+
+export const newSocket = (socket: SocketIOClient.Socket | null): SocketActions => ({
+  type: NEW_SOCKET,
+  socket
+});
 
 export const clearError = (): SocketActions => ({
   type: CLEAR_ERROR,
